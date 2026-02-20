@@ -1,0 +1,122 @@
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "../assets/logo.png";
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Lock scroll saat menu terbuka
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => (document.body.style.overflow = "auto");
+  }, [isOpen]);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 20);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+  return (
+    <>
+      {/* NAVBAR */}
+      <nav
+  className={`sticky top-0 w-full z-50 transition-all duration-300
+  ${scrolled
+    ? "bg-white/90 backdrop-blur-md shadow-md"
+    : "bg-transparent"}
+  `}
+>
+  <div className="w-full">
+    <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+      
+      <img src={Logo} alt="Logo" className="h-12 w-auto" />
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-8 font-medium text-gray-700">
+        <a href="#home" className="hover:text-black transition">
+          Home
+        </a>
+        <a href="#about" className="hover:text-black transition">
+          About
+        </a>
+        <a href="#projects" className="hover:text-black transition">
+          Projects
+        </a>
+      </div>
+
+      {/* Animated Burger */}
+      <button
+        onClick={toggleMenu}
+        className="relative w-8 h-8 flex flex-col justify-center items-center md:hidden"
+      >
+        <motion.span
+          animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute w-6 h-0.5 bg-black"
+        />
+        <motion.span
+          animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          className="absolute w-6 h-0.5 bg-black"
+        />
+        <motion.span
+          animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute w-6 h-0.5 bg-black"
+        />
+      </button>
+    </div>
+  </div>
+</nav>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={toggleMenu}
+            />
+
+            {/* Slide Panel */}
+            <motion.div
+              className="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-xl p-8 flex flex-col space-y-6 md:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <a href="#home" onClick={handleLinkClick}>
+                Home
+              </a>
+              <a href="#about" onClick={handleLinkClick}>
+                About
+              </a>
+              <a href="#projects" onClick={handleLinkClick}>
+                Projects
+              </a>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Navbar;
