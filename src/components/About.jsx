@@ -51,7 +51,7 @@ const slides = [
     specs: ["📘 Content Writer", "⚙️ Presentation", "🖼️ Graphic Design"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
-    cardLogo: "/logos/performance.png",
+    cardLogo: "/logoHPS.png",
     card: {
       description: "PT. Hasta Prima Solusi ( HPS ), Merupakan perusahaan vendor yang juga berafiliasi dengan DMLT Group yang sama dengan PT. MAB. PT. HPS berfokus pada Development dan deployment aplikasi yang akan digunakan pada perusahaan DMLT dan/atau aplikasi yang akan diperjual belikan di pasaran."
     },

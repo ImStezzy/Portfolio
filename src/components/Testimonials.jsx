@@ -2,25 +2,65 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Michael Tan",
-    position: "Project Manager",
-    company: "Tech Solutions",
+    name: "Agung Nugroho",
+    position: "Kepala Koordinator IT",
+    company: "PT. Mitra Abadi Bahari, Tegal ( Obat Nyamuk King Kong Brand )",
     message:
       "Alkhairi is a highly dedicated developer. He consistently delivers quality work and always looks for ways to improve the application.",
     image: "https://i.pravatar.cc/100?img=3",
   },
   {
-    name: "Sarah Wijaya",
-    position: "Product Owner",
-    company: "Digital Startup",
+    name: "Tedy Saleh Setiadi",
+    position: "Kepala Operasional",
+    company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Working with him was a great experience. His analytical thinking as a QA and developer helps ensure the product runs smoothly.",
-    image: "https://i.pravatar.cc/100?img=5",
+    image: "https://i.pravatar.cc/100?img=3",
   },
   {
-    name: "David Lee",
-    position: "Senior Developer",
-    company: "Software Company",
+    name: "Dedi setyawan",
+    position: "Supervisor Software Delphi",
+    company: "PT. Hasta Prima Solusi, Tangerang",
+    message:
+      "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
+    image: "https://i.pravatar.cc/100?img=3",
+  },
+  {
+    name: "Rahmat Ramadhan",
+    position: "Supervisor Software",
+    company: "PT. Hasta Prima Solusi, Tangerang",
+    message:
+      "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
+    image: "https://i.pravatar.cc/100?img=3",
+  },
+  {
+    name: "Ricky Haryanto",
+    position: "PT. Hasta Lestari Jaya",
+    company: "PT. Hasta Prima Solusi, Tangerang",
+    message:
+      "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
+    image: "https://i.pravatar.cc/100?img=7",
+  },
+  {
+    name: "Rudi Novrianto",
+    position: "Senior Programmer Delphi",
+    company: "PT. Hasta Prima Solusi, Tangerang",
+    message:
+      "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
+    image: "https://i.pravatar.cc/100?img=7",
+  },
+  {
+    name: "Antok Wahyudi",
+    position: "Senior Programmer Delphi",
+    company: "PT. Hasta Prima Solusi, Tangerang",
+    message:
+      "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
+    image: "https://i.pravatar.cc/100?img=7",
+  },
+  {
+    name: "Nanang Aandriani",
+    position: "Senior Programmer Delphi",
+    company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "He has strong curiosity and always keeps learning. A great teammate and problem solver.",
     image: "https://i.pravatar.cc/100?img=7",
