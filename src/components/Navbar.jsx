@@ -40,15 +40,26 @@ useEffect(() => {
   <div className="w-full">
     <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
       
-      <img src={Logo} alt="Logo" className="h-12 w-auto" />
+      <motion.img
+        layoutId="site-logo"
+        src={Logo}
+        alt="Logo"
+        className="h-12 w-auto"
+        transition={{
+        type: "spring",
+        stiffness: 80,
+        damping: 20,
+        duration: 1.2
+      }}
+/>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-8 font-medium text-gray-700">
         <a href="#home" className="hover:text-black transition">
           Home
         </a>
-        <a href="#about" className="hover:text-black transition">
-          About
+        <a href="#experience" className="hover:text-black transition">
+          Experience
         </a>
         <a href="#projects" className="hover:text-black transition">
           Projects
@@ -105,8 +116,8 @@ useEffect(() => {
               <a href="#home" onClick={handleLinkClick}>
                 Home
               </a>
-              <a href="#about" onClick={handleLinkClick}>
-                About
+              <a href="#experience" onClick={handleLinkClick}>
+                Experience
               </a>
               <a href="#projects" onClick={handleLinkClick}>
                 Projects

@@ -58,7 +58,7 @@ const slides = [
   },
 ];
 
-const About = () => {
+const Experience = () => {
   const [emblaRef, embla] = useEmblaCarousel({ loop: true, speed: 7 });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -122,7 +122,7 @@ const About = () => {
 
   return (
     <section
-      id="about"
+      id="experience"
       ref={sectionRef}
       className="relative scroll-mt-16 overflow-hidden"
     >
@@ -241,4 +241,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Experience;
