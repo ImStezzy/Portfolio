@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import LogoAccount from '../assets/LogoAccount.png';
+import logoAccount from '../assets/logoAccount.png';
 
 const testimoni = [
   {
@@ -9,7 +9,7 @@ const testimoni = [
     company: "PT. Mitra Abadi Bahari, Tegal ( Obat Nyamuk King Kong Brand )",
     message:
       "Alkhairi is a highly dedicated developer. He consistently delivers quality work and always looks for ways to improve the application.",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Tedy Saleh Setiadi",
@@ -17,7 +17,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: " Muhammad Alfaruki",
@@ -25,7 +25,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Dedi setyawan",
@@ -33,7 +33,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Pribadi yang bertanggung jawab dan konsisten dalam menyelesaikan tugas. Ke depannya, mungkin bisa lebih meningkatkan inisiatif dalam pengambilan keputusan agar kontribusinya semakin maksimal.",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Rahmat Ramadhan",
@@ -41,7 +41,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Hasim Subni",
@@ -49,7 +49,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Ricky Haryanto",
@@ -57,7 +57,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Seorang rekan kerja yang penuh rasa ingin tahu, selalu belajar, dan menyelesaikan masalah bersama.",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Rudi Novrianto",
@@ -65,7 +65,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Selama bekerja bersama, Anda menunjukkan dedikasi, tanggung jawab, dan profesionalisme yang sangat baik. Kontribusi Anda memberikan dampak positif bagi tim dan perusahaan..",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Antok Wahyudi",
@@ -73,7 +73,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Nanang Andriani",
@@ -81,7 +81,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Orang yang pekerja keras.",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
   {
     name: "Dimas Aji Anggono",
@@ -89,7 +89,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: LogoAccount.png,
+    image: logoAccount.png,
   },
 ];
 

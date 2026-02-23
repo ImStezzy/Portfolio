@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 import { Gamepad2 } from "lucide-react";
 
 const Proyek = () => {
+
   const handleDownload = () => {
     const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
       alert(`Maaf !!
 
-Game hanya bisa diakses menggunakan desktop.
-Tidak kompatibel dengan smartphone!!`);
+Game hanya bisa di akses menggunakan desktop.
+Tidak compatible dengan smartphone !!`);
       return;
     }
-
-    const message = `Halo! #Ini pesan dari programmer!!
-Kamu akan mendownload aplikasi game kami, dengan spesifikasi
+    const message = `Halo ! #Ini pesan dari programmer !!
+Kamu akan mendowload aplikasi game kami, dengan spesifikasi
 yang sudah tertera pada website. Terima kasih telah mengunjungi
 dan berpartisipasi,
 
@@ -23,8 +23,8 @@ Alkhairi Jusuf`;
 
     alert(message);
 
-    // gunakan path build dari viteStaticCopy
-    window.location.href = "/Portfolio/assets/FileGame.rar";
+
+    window.location.href = "/FileGame.rar";
   };
 
   return (
