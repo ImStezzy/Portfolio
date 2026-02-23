@@ -8,7 +8,7 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: "src/assets/My CV.pdf",
+          src: "src/assets/MyCV.pdf",
           dest: "assets",              
         },
         {
