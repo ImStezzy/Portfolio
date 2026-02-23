@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion"
 import './App.css'
 import SplashScreen from './components/SplashScreen'
