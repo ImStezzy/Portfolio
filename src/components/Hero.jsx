@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import MyCV from "../assets/My CV.pdf";
 
 const Hero = () => {
   return (
@@ -63,7 +64,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="/My CV.pdf"
+              href={MyCV}
               download
               className="px-6 py-3 border border-gray-400 rounded-xl hover:bg-gray-100 hover:scale-105 transition inline-block"
             >

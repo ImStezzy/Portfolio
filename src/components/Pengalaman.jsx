@@ -1,5 +1,10 @@
 import { useEffect, useCallback, useState, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import LogoTK from '../assets/LogoTK.png';
+import LogoMAB from '../assets/LogoMAB.png';
+import LogoHPS from '../assets/LogoHPS.png';
+import LogoPDAM from '../assets/LogoPDAM.png';
+
 import {
   motion,
   AnimatePresence,
@@ -15,7 +20,7 @@ const slides = [
     specs: ["🗺️ Qgis", "⚙️ Geographic Information System", "🧠 System Design"],
     glow: "bg-blue-500",
     bottomGradient: "to-indigo-100",
-    cardLogo: "/logoPDAM.png",
+    cardLogo: logoPDAM.png,
     card: {
       description: "PDAM Kota Bengkulu adalah Perusahaan Daerah Air Minum yang bergerak dalam penyediaan air bersih berkualitas untuk masyarakat di Kota Bengkulu dan sekitarnya. PDAM ini berkomitmen untuk memberikan pelayanan air bersih yang terjangkau dan memenuhi standar kesehatan serta kebutuhan sehari-hari pelanggan."
     },
@@ -27,7 +32,7 @@ const slides = [
     specs: ["🎮 Windows Gameplay", "⚙️ Unity Engine", "🧠 Waterfall metode", "🖼️ Graphic Design", "🎞️ 2D Animation"],
     glow: "bg-purple-500",
     bottomGradient: "to-pink-100",
-    cardLogo: "/logoTK.png",
+    cardLogo: logoTK.png,
     card: {
       description: "TK Sandhy Putra Telkom Kota Bengkulu adalah lembaga pendidikan anak usia dini (PAUD) berbentuk Taman Kanak-Kanak (TK) yang berada di Jl. Kolonel Berlian No. 51, Teluk Segara, Kota Bengkulu."
     },
@@ -39,7 +44,7 @@ const slides = [
     specs: ["💻 Data Entry", "📊 Visualisasi Data / BI", "🧠 Analytical Thinking"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
-    cardLogo: "/logoMAB.png",
+    cardLogo: logoMAB.png,
     card: {
       description: "PT. Mitra Abadi Bahari ( MAB ), Merupakan perusahaan afiliasi dari DMLT Group yang berfokus pada distribusi FMCG, ritel, dan restoran sejak 1995 dengan brand product yang beredar : Obat Nyamuk King Kong, Ripella, Teh Djempol, Dll. Pada DMLT, MAB bergerak di bidang distribusi yang berbase di kota Tegal."
     },
@@ -51,7 +56,7 @@ const slides = [
     specs: ["📘 Content Writer", "⚙️ Presentation", "🖼️ Graphic Design"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
-    cardLogo: "/logoHPS.png",
+    cardLogo: logoHPS.png,
     card: {
       description: "PT. Hasta Prima Solusi ( HPS ), Merupakan perusahaan vendor yang juga berafiliasi dengan DMLT Group yang sama dengan PT. MAB. PT. HPS berfokus pada Development dan deployment aplikasi yang akan digunakan pada perusahaan DMLT dan/atau aplikasi yang akan diperjual belikan di pasaran."
     },
