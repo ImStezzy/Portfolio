@@ -63,11 +63,11 @@ const Hero = () => {
             </a>
 
             <a
-              href={`${import.meta.env.BASE_URL}My_CV.pdf`}
-              download
+              href={`${import.meta.env.BASE_URL}My_CV.pdf`} // base URL otomatis + file PDF
+              download="Alkhairi_Jusuf_CV.pdf"            // memberi nama file saat download
               className="px-6 py-3 border border-gray-400 rounded-xl hover:bg-gray-100 hover:scale-105 transition inline-block"
             >
-              Download CV
+               Download CV
             </a>
           </motion.div>
 
