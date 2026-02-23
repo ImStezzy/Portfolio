@@ -24,7 +24,7 @@ Alkhairi Jusuf`;
     alert(message);
 
 
-    window.location.href = "/FileGame.rar";
+    window.location.href = `${import.meta.env.BASE_URL}FileGame.rar`;
   };
 
   return (
