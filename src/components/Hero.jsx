@@ -63,8 +63,9 @@ const Hero = () => {
               Contact Me
             </a>
 
+            {/* Link download CV dari assets */}
             <a
-              href={MyCV}
+              href="/Portfolio/assets/My CV.pdf"
               download
               className="px-6 py-3 border border-gray-400 rounded-xl hover:bg-gray-100 hover:scale-105 transition inline-block"
             >
@@ -75,7 +76,7 @@ const Hero = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
