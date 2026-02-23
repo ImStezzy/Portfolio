@@ -12,9 +12,10 @@
     "tailwind:build": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.18",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.34.1",
+    "framer-motion": "^12.34.3",
     "lucide-react": "^0.574.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Gamepad2 } from "lucide-react";
 
-const Projects = () => {
+const Proyek = () => {
 
   const handleDownload = () => {
     const isMobile = window.innerWidth < 768;
@@ -28,7 +28,7 @@ Alkhairi Jusuf`;
   };
 
   return (
-    <section id="projects" className="scroll-mt-16">
+    <section id="proyek" className="scroll-mt-16">
 
       {/* ===== CLEAN PREMIUM PROJECT AREA ===== */}
       <div className="py-24 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100 px-6">
@@ -44,11 +44,11 @@ Alkhairi Jusuf`;
           {/* LEFT SIDE */}
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Featured Game Project
+              Proyek Game
             </h2>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Project game berbasis Unity yang berfokus pada gameplay system,
+              Proyek game berbasis Unity yang berfokus pada gameplay system,
               responsive UI interaction, serta performance optimization
               untuk pengalaman bermain yang stabil.
             </p>
@@ -94,4 +94,4 @@ Alkhairi Jusuf`;
   );
 };
 
-export default Projects;
+export default Proyek;

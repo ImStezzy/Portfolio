@@ -39,7 +39,7 @@ const slides = [
     specs: ["💻 Data Entry", "📊 Visualisasi Data / BI", "🧠 Analytical Thinking"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
-    cardLogo: "/logos/performance.png",
+    cardLogo: "/logoMAB.png",
     card: {
       description: "PT. Mitra Abadi Bahari ( MAB ), Merupakan perusahaan afiliasi dari DMLT Group yang berfokus pada distribusi FMCG, ritel, dan restoran sejak 1995 dengan brand product yang beredar : Obat Nyamuk King Kong, Ripella, Teh Djempol, Dll. Pada DMLT, MAB bergerak di bidang distribusi yang berbase di kota Tegal."
     },
@@ -58,7 +58,7 @@ const slides = [
   },
 ];
 
-const Experience = () => {
+const Pengalaman = () => {
   const [emblaRef, embla] = useEmblaCarousel({ loop: true, speed: 7 });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -122,7 +122,7 @@ const Experience = () => {
 
   return (
     <section
-      id="experience"
+      id="pengalaman"
       ref={sectionRef}
       className="relative scroll-mt-16 overflow-hidden"
     >
@@ -241,4 +241,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Pengalaman;

@@ -4,10 +4,10 @@ import './App.css'
 import SplashScreen from './components/SplashScreen'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
 import Footer from './components/Footer'
-import Testimonials from './components/Testimonials'
+import Pengalaman from './components/Pengalaman'
+import Proyek from './components/Proyek'
+import Testimoni from './components/Testimoni'
 
 function App() {
 
@@ -34,9 +34,9 @@ function App() {
 
           <main className="flex-1">
             <Hero />
-            <Experience />
-            <Projects />
-            <Testimonials />
+            <Pengalaman />
+            <Proyek />
+            <Testimoni />
           </main>
 
           <Footer />

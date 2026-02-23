@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 const Hero = () => {
   return (
     <section 
-      id="home"
+      id="beranda"
       className="relative z-20 py-20 scroll-mt-16 bg-white"
     >
       <div className="max-w-7xl mx-auto px-6">

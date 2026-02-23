@@ -55,14 +55,17 @@ useEffect(() => {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-        <a href="#home" className="hover:text-black transition">
-          Home
+        <a href="#beranda" className="hover:text-black transition">
+          Beranda
         </a>
-        <a href="#experience" className="hover:text-black transition">
-          Experience
+        <a href="#pengalaman" className="hover:text-black transition">
+          Pengalaman
         </a>
-        <a href="#projects" className="hover:text-black transition">
-          Projects
+        <a href="#proyek" className="hover:text-black transition">
+          Proyek
+        </a>
+        <a href="#testimoni" className="hover:text-black transition">
+          Testimoni
         </a>
       </div>
 
@@ -113,14 +116,17 @@ useEffect(() => {
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <a href="#home" onClick={handleLinkClick}>
-                Home
+              <a href="#beranda" onClick={handleLinkClick}>
+                Beranda
               </a>
-              <a href="#experience" onClick={handleLinkClick}>
-                Experience
+              <a href="#pengalaman" onClick={handleLinkClick}>
+                Pengalaman
               </a>
-              <a href="#projects" onClick={handleLinkClick}>
-                Projects
+              <a href="#proyek" onClick={handleLinkClick}>
+                Proyek
+              </a>
+              <a href="#testimoni" onClick={handleLinkClick}>
+                Testimoni
               </a>
             </motion.div>
           </>
