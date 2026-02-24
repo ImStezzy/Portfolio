@@ -159,7 +159,7 @@ const Pengalaman = () => {
                     }}
                     transition={{ duration: 0.5 }}
                   >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-900">
                       {slide.title}
                     </h2>
 
