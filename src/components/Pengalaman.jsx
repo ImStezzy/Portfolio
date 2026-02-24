@@ -83,7 +83,6 @@ const Pengalaman = () => {
     offset: ["start end", "end start"],
   });
 
-  // Parallax lebih ringan
   const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const scrollTo = useCallback(
@@ -111,7 +110,6 @@ const Pengalaman = () => {
     return () => clearInterval(autoplay);
   }, [embla]);
 
-  // Tilt hanya desktop
   const handleMouseMove = (e) => {
     if (isMobile) return;
 
@@ -140,15 +138,15 @@ const Pengalaman = () => {
       className="relative scroll-mt-16 overflow-hidden"
     >
       <div
-        className={`relative w-full py-24 md:py-36 px-6
+        className={`relative w-full py-16 md:py-24 px-6
         bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
 
-        {/* Glow optimized */}
+        {/* Glow lebih pendek */}
         <motion.div
           key={selectedIndex}
-          className={`absolute -top-20 right-[-40px] w-[260px] h-[260px] ${slides[selectedIndex].glow}
-          opacity-20 blur-[90px] rounded-full pointer-events-none`}
+          className={`absolute -top-16 right-[-20px] w-[200px] h-[200px] ${slides[selectedIndex].glow}
+          opacity-20 blur-[70px] rounded-full pointer-events-none`}
           style={{ y: parallaxY }}
         />
 
@@ -185,7 +183,7 @@ const Pengalaman = () => {
             </div>
 
             {/* DOT NAV */}
-            <div className="flex gap-3 mt-10 ml-3">
+            <div className="flex gap-3 mt-8 ml-3">
               {slides.map((_, index) => (
                 <button
                   key={index}
