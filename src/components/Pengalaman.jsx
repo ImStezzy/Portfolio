@@ -181,21 +181,20 @@ const Pengalaman = () => {
               ))}
             </div>
 
-            {/* DOT NAV FIXED SMALL */}
-            <div className="flex gap-2 mt-8 ml-3 items-center">
-              {slides.map((_, index) => (
-                <button
+            {/* DOT NAV SMALL */}
+              <div className="flex gap-2 mt-4 ml-2 items-center">
+                {slides.map((_, index) => (
+                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`rounded-full transition-all duration-300
-                  ${
-                    selectedIndex === index
-                      ? "w-2.5 h-2.5 bg-black"
-                      : "w-2 h-2 bg-gray-400 opacity-50"
-                  }`}
-                />
-              ))}
-            </div>
+                  className={`flex-shrink-0 rounded-full transition-all duration-300
+              ${
+                selectedIndex === index
+                  ? "w-2 h-2 bg-black scale-110"
+                  : "w-1.5 h-1.5 bg-gray-400 opacity-50"
+               }`}
+              />
+            ))}
           </div>
 
           {/* CARD */}
