@@ -52,10 +52,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-3">Navigation</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="beranda" className="hover:text-white">Beranda</a></li>
-              <li><a href="pengalaman" className="hover:text-white">Pengalaman</a></li>
-              <li><a href="proyek" className="hover:text-white">Proyek</a></li>
-              <li><a href="testimoni" className="hover:text-white">Testimoni</a></li>
+              <li><a href="#beranda" className="hover:text-white">Beranda</a></li>
+              <li><a href="#pengalaman" className="hover:text-white">Pengalaman</a></li>
+              <li><a href="#proyek" className="hover:text-white">Proyek</a></li>
+              <li><a href="#testimoni" className="hover:text-white">Testimoni</a></li>
             </ul>
           </div>
 
@@ -107,10 +107,10 @@ const Footer = () => {
           <div className="md:ml-16">
             <h3 className="font-semibold mb-3">Navigation</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="beranda" className="hover:text-white">Beranda</a></li>
-              <li><a href="pengalaman" className="hover:text-white">Pengalaman</a></li>
-              <li><a href="proyek" className="hover:text-white">Proyek</a></li>
-              <li><a href="testimoni" className="hover:text-white">Testimoni</a></li>
+              <li><a href="#beranda" className="hover:text-white">Beranda</a></li>
+              <li><a href="#pengalaman" className="hover:text-white">Pengalaman</a></li>
+              <li><a href="#proyek" className="hover:text-white">Proyek</a></li>
+              <li><a href="#testimoni" className="hover:text-white">Testimoni</a></li>
             </ul>
           </div>
 
