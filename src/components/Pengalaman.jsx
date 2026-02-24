@@ -102,6 +102,7 @@ const Pengalaman = () => {
 
   useEffect(() => {
     if (!embla) return;
+
     const autoplay = setInterval(() => {
       embla.scrollNext();
     }, 4500);
@@ -127,8 +128,7 @@ const Pengalaman = () => {
 
   const resetTilt = () => {
     if (cardRef.current)
-      cardRef.current.style.transform =
-        "rotateX(0) rotateY(0) scale(1)";
+      cardRef.current.style.transform = "rotateX(0) rotateY(0) scale(1)";
   };
 
   return (
@@ -141,6 +141,7 @@ const Pengalaman = () => {
         className={`relative w-full py-16 md:py-24 px-6
         bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
+
         {/* Glow */}
         <motion.div
           key={selectedIndex}
@@ -150,6 +151,7 @@ const Pengalaman = () => {
         />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center relative z-10">
+
           {/* TEXT CAROUSEL */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -162,7 +164,7 @@ const Pengalaman = () => {
                     }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-900">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-800">
                       {slide.title}
                     </h2>
 
@@ -191,8 +193,8 @@ const Pengalaman = () => {
                   transition-all duration-300 ease-out
                   ${
                     selectedIndex === index
-                      ? "w-4 bg-black opacity-100 scale-110"
-                      : "w-3 bg-gray-400 opacity-50 hover:opacity-80"
+                      ? "w-3 bg-black opacity-100 scale-110"
+                      : "w-2.5 bg-gray-400 opacity-40 hover:opacity-70"
                   }
                   `}
                 />
@@ -215,6 +217,7 @@ const Pengalaman = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
               >
+
                 <div className="flex items-center gap-4 mb-5">
                   <img
                     src={slides[selectedIndex].cardLogo}
@@ -222,7 +225,7 @@ const Pengalaman = () => {
                     className="w-14 h-14 object-contain"
                   />
 
-                  <h3 className="text-lg font-semibold">
+                  <h3 className="text-lg font-semibold text-blue-800">
                     Latar Belakang Perusahaan
                   </h3>
                 </div>
@@ -230,9 +233,11 @@ const Pengalaman = () => {
                 <p className="text-gray-700 leading-relaxed text-justify">
                   {slides[selectedIndex].card.description}
                 </p>
+
               </motion.div>
             </AnimatePresence>
           </motion.div>
+
         </div>
       </div>
     </section>
