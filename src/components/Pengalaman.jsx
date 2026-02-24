@@ -135,7 +135,7 @@ const Pengalaman = () => {
     <section
       id="pengalaman"
       ref={sectionRef}
-      className="relative scroll-mt-16 overflow-x-hidden"
+      className="relative scroll-mt-16"
     >
       <div
         className={`relative w-full py-16 md:py-24 px-6
