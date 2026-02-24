@@ -142,7 +142,6 @@ const Pengalaman = () => {
         bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
 
-        {/* Glow */}
         <motion.div
           key={selectedIndex}
           className={`absolute -top-16 right-[-20px] w-[200px] h-[200px] ${slides[selectedIndex].glow}
@@ -182,21 +181,18 @@ const Pengalaman = () => {
               ))}
             </div>
 
-            {/* DOT NAV PREMIUM */}
-            <div className="flex gap-3 mt-8 ml-3 items-center">
+            {/* DOT NAV FIXED SMALL */}
+            <div className="flex gap-2 mt-8 ml-3 items-center">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`
-                  aspect-square rounded-full flex-shrink-0
-                  transition-all duration-300 ease-out
+                  className={`rounded-full transition-all duration-300
                   ${
                     selectedIndex === index
-                      ? "w-3 bg-black opacity-100 scale-110"
-                      : "w-2.5 bg-gray-400 opacity-40 hover:opacity-70"
-                  }
-                  `}
+                      ? "w-2.5 h-2.5 bg-black"
+                      : "w-2 h-2 bg-gray-400 opacity-50"
+                  }`}
                 />
               ))}
             </div>
@@ -217,7 +213,6 @@ const Pengalaman = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
               >
-
                 <div className="flex items-center gap-4 mb-5">
                   <img
                     src={slides[selectedIndex].cardLogo}
