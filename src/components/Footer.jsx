@@ -19,20 +19,43 @@ const Footer = () => {
             </p>
 
             <div className="flex space-x-4 mt-4 text-lg">
-              <a href="#" className="hover:text-gray-400"><FaLinkedin /></a>
-              <a href="#" className="hover:text-gray-400"><FaInstagram /></a>
-              <a href="#" className="hover:text-gray-400"><FaBehance /></a>
+              <a 
+                href="https://www.linkedin.com/in/alkhairijusuf?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-400"
+              >
+                <FaLinkedin />
+              </a>
+
+              <a 
+                href="https://www.instagram.com/alkhairi_je?igsh=aXJ3cmZiaGRseXJz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-400"
+              >
+                <FaInstagram />
+              </a>
+
+              <a 
+                href="https://www.behance.net/alkhairijusuf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-400"
+              >
+                <FaBehance />
+              </a>
             </div>
-          </div>
+           </div>
 
           {/* Kolom 2 */}
           <div>
             <h3 className="font-semibold mb-3">Navigation</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="#" className="hover:text-white">Home</a></li>
-              <li><a href="#" className="hover:text-white">About</a></li>
-              <li><a href="#" className="hover:text-white">Projects</a></li>
-              <li><a href="#" className="hover:text-white">Contact</a></li>
+              <li><a href="beranda" className="hover:text-white">Beranda</a></li>
+              <li><a href="pengalaman" className="hover:text-white">Pengalaman</a></li>
+              <li><a href="proyek" className="hover:text-white">Proyek</a></li>
+              <li><a href="testimoni" className="hover:text-white">Testimoni</a></li>
             </ul>
           </div>
 
@@ -60,7 +83,6 @@ const Footer = () => {
           <div className="flex items-start justify-center">
             <img src={Logo} alt="Logo" className="w-20 opacity-80" />
           </div>
-
         </div>
 
         {/* ================= DESKTOP LAYOUT ================= */}
@@ -85,9 +107,10 @@ const Footer = () => {
           <div className="md:ml-16">
             <h3 className="font-semibold mb-3">Navigation</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><a href="#" className="hover:text-white">Home</a></li>
-              <li><a href="#" className="hover:text-white">About</a></li>
-              <li><a href="#" className="hover:text-white">Projects</a></li>
+              <li><a href="beranda" className="hover:text-white">Beranda</a></li>
+              <li><a href="pengalaman" className="hover:text-white">Pengalaman</a></li>
+              <li><a href="proyek" className="hover:text-white">Proyek</a></li>
+              <li><a href="testimoni" className="hover:text-white">Testimoni</a></li>
             </ul>
           </div>
 

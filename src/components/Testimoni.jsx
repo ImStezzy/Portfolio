@@ -9,7 +9,7 @@ const testimoni = [
     company: "PT. Mitra Abadi Bahari, Tegal ( Obat Nyamuk King Kong Brand )",
     message:
       "Alkhairi is a highly dedicated developer. He consistently delivers quality work and always looks for ways to improve the application.",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Tedy Saleh Setiadi",
@@ -17,7 +17,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: " Muhammad Alfaruki",
@@ -25,7 +25,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Dedi setyawan",
@@ -33,7 +33,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Pribadi yang bertanggung jawab dan konsisten dalam menyelesaikan tugas. Ke depannya, mungkin bisa lebih meningkatkan inisiatif dalam pengambilan keputusan agar kontribusinya semakin maksimal.",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Rahmat Ramadhan",
@@ -41,7 +41,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Hasim Subni",
@@ -49,7 +49,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Ricky Haryanto",
@@ -57,7 +57,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Seorang rekan kerja yang penuh rasa ingin tahu, selalu belajar, dan menyelesaikan masalah bersama.",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Rudi Novrianto",
@@ -65,7 +65,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Selama bekerja bersama, Anda menunjukkan dedikasi, tanggung jawab, dan profesionalisme yang sangat baik. Kontribusi Anda memberikan dampak positif bagi tim dan perusahaan..",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Antok Wahyudi",
@@ -73,7 +73,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Hasil kerja sangat memuaskan, pengerjaan cepat, detail, dan sesuai kebutuhan sistem. Komunikasi juga responsif serta sangat memahami alur sistem dengan baik. Sangat direkomendasikan untuk pengembangan maupun perbaikan sistem.",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Nanang Andriani",
@@ -81,7 +81,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       "Orang yang pekerja keras.",
-    image: logoAccount.png,
+    image: logoAccount,
   },
   {
     name: "Dimas Aji Anggono",
@@ -89,7 +89,7 @@ const testimoni = [
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
       " ",
-    image: logoAccount.png,
+    image: logoAccount,
   },
 ];
 
