@@ -72,7 +72,7 @@ const testimoni = [
     position: "Senior Programmer Delphi",
     company: "PT. Hasta Prima Solusi, Tangerang",
     message:
-      " ",
+      "Hasil kerja sangat memuaskan, pengerjaan cepat, detail, dan sesuai kebutuhan sistem. Komunikasi juga responsif serta sangat memahami alur sistem dengan baik. Sangat direkomendasikan untuk pengembangan maupun perbaikan sistem.",
     image: logoAccount.png,
   },
   {
@@ -163,7 +163,7 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold mb-4"
+          className="text-3xl md:text-4xl font-bold mb-4 text-blue-800"
         >
           Apa Kata Mereka
         </motion.h2>
