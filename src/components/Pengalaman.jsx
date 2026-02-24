@@ -138,7 +138,7 @@ const Pengalaman = () => {
       className="relative scroll-mt-16"
     >
       <div
-        className={`relative w-full py-16 md:py-24 px-6
+        className={`relative w-full py-20 md:py-28 px-6
         bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
 
