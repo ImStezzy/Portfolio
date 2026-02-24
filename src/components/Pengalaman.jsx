@@ -181,24 +181,24 @@ const Pengalaman = () => {
               ))}
             </div>
 
-            {/* DOT NAV BULAT FIX */}
-            <div className="flex gap-2 mt-4 ml-2 items-center">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollTo(index)}
-                  className={`
-                    w-[6px] h-[6px] 
-                    min-w-[6px] min-h-[6px]
-                    aspect-square
-                    rounded-full
-                    flex-shrink-0
-                    transition-opacity duration-200
-                    ${selectedIndex === index ? "bg-black opacity-100" : "bg-gray-400 opacity-40"}
-                  `}
-                />
-              ))}
-            </div>
+            {/* DOT NAV MINIMALIS BULAT */}
+              <div className="flex gap-2 mt-4 ml-2 items-center">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollTo(index)}
+                    className={`
+                      block
+                      w-[6px] h-[6px]
+                      rounded-full
+                      flex-none
+                      p-0
+                      transition-all duration-200
+                      ${selectedIndex === index ? "bg-black scale-110" : "bg-gray-400 opacity-50"}
+                    `}
+                  />
+                ))}
+              </div>
            </div> 
 
           {/* CARD */}
