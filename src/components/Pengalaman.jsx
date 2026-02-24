@@ -1,9 +1,9 @@
 import { useEffect, useCallback, useState, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import logoTK from '../assets/LogoTK.png';
-import logoMAB from '../assets/LogoMAB.png';
-import logoHPS from '../assets/LogoHPS.png';
-import logoPDAM from '../assets/LogoPDAM.png';
+import logoTK from "../assets/LogoTK.png";
+import logoMAB from "../assets/LogoMAB.png";
+import logoHPS from "../assets/LogoHPS.png";
+import logoPDAM from "../assets/LogoPDAM.png";
 
 import {
   motion,
@@ -16,66 +16,75 @@ const slides = [
   {
     title: "Implementator Qgis",
     description:
-      "Mendata dan mempetakan perpipaan konsumen PDAM kota bengkulu dengan menggunakan aplikasi Quantum Geographic Information System (QGIS).",
-    specs: ["🗺️ Qgis", "⚙️ Geographic Information System", "🧠 System Design"],
+      "Mendata dan mempetakan perpipaan konsumen PDAM kota bengkulu menggunakan QGIS.",
+    specs: ["🗺️ Qgis", "⚙️ GIS", "🧠 System Design"],
     glow: "bg-blue-500",
     bottomGradient: "to-indigo-100",
     cardLogo: logoPDAM,
     card: {
-      description: "PDAM Kota Bengkulu adalah Perusahaan Daerah Air Minum yang bergerak dalam penyediaan air bersih berkualitas untuk masyarakat di Kota Bengkulu dan sekitarnya. PDAM ini berkomitmen untuk memberikan pelayanan air bersih yang terjangkau dan memenuhi standar kesehatan serta kebutuhan sehari-hari pelanggan."
+      description:
+        "PDAM Kota Bengkulu menyediakan layanan air bersih berkualitas bagi masyarakat Kota Bengkulu."
     },
   },
   {
     title: "Game Development",
     description:
-      "Mendevelopment serta mendeployment gameplay edukasi untuk anak taman kanak-kanak berbasis windows, menggunakan unity engine.",
-    specs: ["🎮 Windows Gameplay", "⚙️ Unity Engine", "🧠 Waterfall metode", "🖼️ Graphic Design", "🎞️ 2D Animation"],
+      "Mengembangkan gameplay edukasi anak TK berbasis Windows menggunakan Unity.",
+    specs: ["🎮 Windows Gameplay", "⚙️ Unity Engine", "🎞️ 2D Animation"],
     glow: "bg-purple-500",
     bottomGradient: "to-pink-100",
     cardLogo: logoTK,
     card: {
-      description: "TK Sandhy Putra Telkom Kota Bengkulu adalah lembaga pendidikan anak usia dini (PAUD) berbentuk Taman Kanak-Kanak (TK) yang berada di Jl. Kolonel Berlian No. 51, Teluk Segara, Kota Bengkulu."
+      description:
+        "TK Sandhy Putra Telkom Bengkulu merupakan lembaga PAUD yang berfokus pada pendidikan anak usia dini."
     },
   },
   {
     title: "Data Analyst",
     description:
-      "Fokus pada pendataan dan menganalisis data yang ada yang kemudian akan di visualisasikan pada dahsboard power BI.",
-    specs: ["💻 Data Entry", "📊 Visualisasi Data / BI", "🧠 Analytical Thinking"],
+      "Melakukan pengolahan dan visualisasi data menggunakan Power BI dashboard.",
+    specs: ["💻 Data Entry", "📊 Data Visualization", "🧠 Analytical Thinking"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
     cardLogo: logoMAB,
     card: {
-      description: "PT. Mitra Abadi Bahari ( MAB ), Merupakan perusahaan afiliasi dari DMLT Group yang berfokus pada distribusi FMCG, ritel, dan restoran sejak 1995 dengan brand product yang beredar : Obat Nyamuk King Kong, Ripella, Teh Djempol, Dll. Pada DMLT, MAB bergerak di bidang distribusi yang berbase di kota Tegal."
+      description:
+        "PT Mitra Abadi Bahari merupakan perusahaan distribusi FMCG yang berafiliasi dengan DMLT Group."
     },
   },
   {
-    title: "Trainer App & QA Manual [Tester]",
+    title: "Trainer App & QA Tester",
     description:
-      "Melakukan pelatihan karyawan, Membuat manual book dan product knowledge, Serta melakukan pengecekan aplikasi. Hal ini dilakukan agar dapat memaksimalkan performance aplikasi sebelum di pasarkan.",
-    specs: ["📘 Content Writer", "⚙️ Presentation", "🖼️ Graphic Design"],
+      "Melatih karyawan, membuat manual book, dan melakukan QA testing aplikasi.",
+    specs: ["📘 Documentation", "⚙️ Presentation", "🖼️ Graphic Design"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
     cardLogo: logoHPS,
     card: {
-      description: "PT. Hasta Prima Solusi ( HPS ), Merupakan perusahaan vendor yang juga berafiliasi dengan DMLT Group yang sama dengan PT. MAB. PT. HPS berfokus pada Development dan deployment aplikasi yang akan digunakan pada perusahaan DMLT dan/atau aplikasi yang akan diperjual belikan di pasaran."
+      description:
+        "PT Hasta Prima Solusi merupakan perusahaan pengembang aplikasi dalam ekosistem DMLT Group."
     },
   },
 ];
 
 const Pengalaman = () => {
-  const [emblaRef, embla] = useEmblaCarousel({ loop: true, speed: 7 });
+
+  const [emblaRef, embla] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
+
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < 768;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  // Parallax lebih ringan
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const scrollTo = useCallback(
     (index) => embla && embla.scrollTo(index),
@@ -95,13 +104,17 @@ const Pengalaman = () => {
 
   useEffect(() => {
     if (!embla) return;
-    const interval = setInterval(() => {
+    const autoplay = setInterval(() => {
       embla.scrollNext();
-    }, 4000);
-    return () => clearInterval(interval);
+    }, 4500);
+
+    return () => clearInterval(autoplay);
   }, [embla]);
 
+  // Tilt hanya desktop
   const handleMouseMove = (e) => {
+    if (isMobile) return;
+
     const card = cardRef.current;
     if (!card) return;
 
@@ -109,20 +122,15 @@ const Pengalaman = () => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    const rotateX = -(y - rect.height / 2) / 30;
+    const rotateY = (x - rect.width / 2) / 30;
 
-    const rotateX = -(y - centerY) / 25;
-    const rotateY = (x - centerX) / 25;
-
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
   };
 
   const resetTilt = () => {
-    if (cardRef.current) {
-      cardRef.current.style.transform =
-        "rotateX(0deg) rotateY(0deg) scale(1)";
-    }
+    if (cardRef.current)
+      cardRef.current.style.transform = "rotateX(0) rotateY(0) scale(1)";
   };
 
   return (
@@ -132,32 +140,31 @@ const Pengalaman = () => {
       className="relative scroll-mt-16 overflow-hidden"
     >
       <div
-        className={`relative w-full py-32 md:py-40 px-6 overflow-hidden transition-all duration-1000
-        bg-gradient-to-b from-white via-white via-40% ${slides[selectedIndex].bottomGradient}`}
+        className={`relative w-full py-24 md:py-36 px-6
+        bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
+
+        {/* Glow optimized */}
         <motion.div
           key={selectedIndex}
-          className={`absolute -top-24 right-[-60px] w-[350px] h-[350px] ${slides[selectedIndex].glow} opacity-25 blur-[140px] rounded-full pointer-events-none`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ duration: 1 }}
+          className={`absolute -top-20 right-[-40px] w-[260px] h-[260px] ${slides[selectedIndex].glow}
+          opacity-20 blur-[90px] rounded-full pointer-events-none`}
           style={{ y: parallaxY }}
         />
 
-        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center relative z-10">
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-          
+          {/* TEXT CAROUSEL */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {slides.map((slide, index) => (
-                <div className="min-w-full pr-8" key={index}>
+                <div className="min-w-full pr-6" key={index}>
                   <motion.div
                     animate={{
-                      opacity: selectedIndex === index ? 1 : 0.3,
-                      y: selectedIndex === index ? 0 : 30,
+                      opacity: selectedIndex === index ? 1 : 0.35,
+                      y: selectedIndex === index ? 0 : 20,
                     }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.4 }}
                   >
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-900">
                       {slide.title}
@@ -177,65 +184,55 @@ const Pengalaman = () => {
               ))}
             </div>
 
+            {/* DOT NAV */}
             <div className="flex gap-3 mt-10 ml-3">
               {slides.map((_, index) => (
                 <button
                   key={index}
-                  type="button"
                   onClick={() => scrollTo(index)}
-                  className={`
-                    w-4 h-4
-                    min-w-[16px] min-h-[16px]
-                    rounded-full
-                    flex-shrink-0
-                    block
-                    p-0
-                    border-0
-                    transition-all duration-300
+                  className={`w-3 h-3 rounded-full transition-all
                     ${
                       selectedIndex === index
                         ? "bg-black"
-                        : "bg-gray-300 hover:bg-gray-400"
-                    }
-                  `}
+                        : "bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
           </div>
 
+          {/* CARD */}
           <motion.div
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={resetTilt}
-            className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-white/40 transition-transform duration-300"
+            className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-white/40 transition-transform duration-300 will-change-transform"
           >
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedIndex}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.45 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <motion.img
-                    key={slides[selectedIndex].cardLogo}
+
+                <div className="flex items-center gap-4 mb-5">
+                  <img
                     src={slides[selectedIndex].cardLogo}
-                    alt="Slide Logo"
-                    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, rotate: 10 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-16 h-16 object-contain drop-shadow-md"
+                    alt="Logo"
+                    className="w-14 h-14 object-contain"
                   />
-                  <h3 className="text-xl font-semibold">
+
+                  <h3 className="text-lg font-semibold">
                     Latar Belakang Perusahaan
                   </h3>
                 </div>
 
-                <div className="space-y-4 text-gray-700 leading-relaxed text-justify">
-                  <p>{slides[selectedIndex].card.description}</p>
-                </div>
+                <p className="text-gray-700 leading-relaxed text-justify">
+                  {slides[selectedIndex].card.description}
+                </p>
+
               </motion.div>
             </AnimatePresence>
           </motion.div>
