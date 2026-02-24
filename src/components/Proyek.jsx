@@ -7,7 +7,7 @@ const Proyek = () => {
     const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
-      alert(`Maaf !!
+      alert(`Maaf !! #Ini pesan dari programmer
 
 Game hanya bisa di akses menggunakan desktop.
 Tidak compatible dengan smartphone !!`);
@@ -43,7 +43,7 @@ Alkhairi Jusuf`;
 
           {/* LEFT SIDE */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
               Proyek Game
             </h2>
 
