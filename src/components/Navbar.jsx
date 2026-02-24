@@ -31,9 +31,9 @@ const Navbar = () => {
     <>
       {/* NAVBAR */}
       <nav
-        className={`sticky top-0 w-full z-50 transition-all duration-300 will-change-transform
+        className={`sticky top-0 w-full z-50 transition-all duration-300 will-change-transform transform-gpu
         ${scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
+          ? "bg-white/95 backdrop-blur-sm shadow-sm"
           : "bg-white backdrop-blur-sm"
         }
         `}
@@ -139,4 +139,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
