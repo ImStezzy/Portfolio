@@ -38,7 +38,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="max-w-xl text-base mb-8 text-black"
+            className="max-w-xl text-base mb-8 text-gray-800"
           >
             Saya membangun website modern dan dashboard interaktif yang responsif dan user-friendly.
             Menentukan visualisasi data yang diperlukan perusahaan, serta mendesain visual grafis
