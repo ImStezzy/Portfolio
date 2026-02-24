@@ -194,8 +194,9 @@ const Pengalaman = () => {
                   : "w-1.5 h-1.5 bg-gray-400 opacity-50"
                }`}
               />
-            ))}
-          </div>
+              ))}
+            </div>
+           </div> 
 
           {/* CARD */}
           <motion.div
