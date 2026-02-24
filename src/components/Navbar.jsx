@@ -31,10 +31,11 @@ const Navbar = () => {
     <>
       {/* NAVBAR */}
       <nav
-        className={`sticky top-0 w-full z-50 transition-all duration-300
+        className={`sticky top-0 w-full z-50 transition-all duration-300 will-change-transform
         ${scrolled
           ? "bg-white/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"}
+          : "bg-white/80 backdrop-blur-sm"
+        }
         `}
       >
         <div className="w-full">
