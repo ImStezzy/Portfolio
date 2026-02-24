@@ -21,10 +21,8 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-5xl lg:text-6xl font-bold leading-tight mb-6"
           >
-            Halo, Saya{" "}
-            <span className="text-blue-600">
-              Alkhairi Jusuf
-            </span>
+            <span className="text-black">Halo, Saya </span>
+            <span className="text-blue-600">Alkhairi Jusuf</span>
           </motion.h1>
 
           <motion.h2
