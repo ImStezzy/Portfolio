@@ -23,7 +23,7 @@ const slides = [
     cardLogo: logoPDAM,
     card: {
       description:
-        "PDAM Kota Bengkulu menyediakan layanan air bersih berkualitas bagi masyarakat Kota Bengkulu."
+        "PDAM Kota Bengkulu menyediakan layanan air bersih berkualitas bagi masyarakat Kota Bengkulu.",
     },
   },
   {
@@ -36,7 +36,7 @@ const slides = [
     cardLogo: logoTK,
     card: {
       description:
-        "TK Sandhy Putra Telkom Bengkulu merupakan lembaga PAUD yang berfokus pada pendidikan anak usia dini."
+        "TK Sandhy Putra Telkom Bengkulu merupakan lembaga PAUD yang berfokus pada pendidikan anak usia dini.",
     },
   },
   {
@@ -49,7 +49,7 @@ const slides = [
     cardLogo: logoMAB,
     card: {
       description:
-        "PT Mitra Abadi Bahari merupakan perusahaan distribusi FMCG yang berafiliasi dengan DMLT Group."
+        "PT Mitra Abadi Bahari merupakan perusahaan distribusi FMCG yang berafiliasi dengan DMLT Group.",
     },
   },
   {
@@ -62,13 +62,12 @@ const slides = [
     cardLogo: logoHPS,
     card: {
       description:
-        "PT Hasta Prima Solusi merupakan perusahaan pengembang aplikasi dalam ekosistem DMLT Group."
+        "PT Hasta Prima Solusi merupakan perusahaan pengembang aplikasi dalam ekosistem DMLT Group.",
     },
   },
 ];
 
 const Pengalaman = () => {
-
   const [emblaRef, embla] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -128,7 +127,8 @@ const Pengalaman = () => {
 
   const resetTilt = () => {
     if (cardRef.current)
-      cardRef.current.style.transform = "rotateX(0) rotateY(0) scale(1)";
+      cardRef.current.style.transform =
+        "rotateX(0) rotateY(0) scale(1)";
   };
 
   return (
@@ -141,8 +141,7 @@ const Pengalaman = () => {
         className={`relative w-full py-16 md:py-24 px-6
         bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
       >
-
-        {/* Glow lebih pendek */}
+        {/* Glow */}
         <motion.div
           key={selectedIndex}
           className={`absolute -top-16 right-[-20px] w-[200px] h-[200px] ${slides[selectedIndex].glow}
@@ -151,7 +150,6 @@ const Pengalaman = () => {
         />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center relative z-10">
-
           {/* TEXT CAROUSEL */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -182,18 +180,21 @@ const Pengalaman = () => {
               ))}
             </div>
 
-            {/* DOT NAV */}
-            <div className="flex gap-3 mt-8 ml-3">
+            {/* DOT NAV PREMIUM */}
+            <div className="flex gap-3 mt-8 ml-3 items-center">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`w-3 h-3 rounded-full transition-all
-                    ${
-                      selectedIndex === index
-                        ? "bg-black"
-                        : "bg-gray-300"
-                    }`}
+                  className={`
+                  aspect-square rounded-full flex-shrink-0
+                  transition-all duration-300 ease-out
+                  ${
+                    selectedIndex === index
+                      ? "w-4 bg-black opacity-100 scale-110"
+                      : "w-3 bg-gray-400 opacity-50 hover:opacity-80"
+                  }
+                  `}
                 />
               ))}
             </div>
@@ -214,7 +215,6 @@ const Pengalaman = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
               >
-
                 <div className="flex items-center gap-4 mb-5">
                   <img
                     src={slides[selectedIndex].cardLogo}
@@ -230,11 +230,9 @@ const Pengalaman = () => {
                 <p className="text-gray-700 leading-relaxed text-justify">
                   {slides[selectedIndex].card.description}
                 </p>
-
               </motion.div>
             </AnimatePresence>
           </motion.div>
-
         </div>
       </div>
     </section>
