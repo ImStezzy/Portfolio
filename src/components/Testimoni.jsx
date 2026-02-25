@@ -17,131 +17,145 @@ const testimoni = [
 ];
 
 const TestimoniSection = () => {
+
   const sliderRef = useRef(null);
-  const [index, setIndex] = useState(testimoni.length);
+  const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [current, setCurrent] = useState(0);
-  const extended = [...testimoni, ...testimoni, ...testimoni];
+
+  const startX = useRef(0);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const resize = () => setIsMobile(window.innerWidth < 768);
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
-  // Ultra-light auto-slide
+  // AUTO SLIDE (ringan)
   useEffect(() => {
     const interval = setInterval(() => {
-      if (isMobile) setCurrent((prev) => (prev + 1) % testimoni.length);
-      else setIndex((prev) => prev + 1);
-    }, 4500); // slide lebih lambat = lebih ringan
+      setIndex((prev) => (prev + 1) % testimoni.length);
+    }, 4500);
+
     return () => clearInterval(interval);
-  }, [isMobile]);
+  }, []);
 
+  // UPDATE POSITION GPU
   useEffect(() => {
-    if (index >= testimoni.length * 2) setTimeout(() => setIndex(testimoni.length), 500);
-  }, [index]);
 
-  // Swipe
-  let startX = 0;
-  const handleTouchStart = (e) => (startX = e.touches[0].clientX);
-  const handleTouchEnd = (e) => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) isMobile ? setCurrent((p) => (p + 1) % testimoni.length) : setIndex((p) => p + 1);
-    if (endX - startX > 50) isMobile ? setCurrent((p) => (p - 1 + testimoni.length) % testimoni.length) : setIndex((p) => p - 1);
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const width = slider.clientWidth;
+    const cardWidth = isMobile ? width : width / 3;
+
+    const x = -(index * cardWidth);
+
+    slider.style.transform = `translate3d(${x}px,0,0)`;
+
+  }, [index, isMobile]);
+
+  // SWIPE
+  const handleTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
   };
 
-  const slideWidth = isMobile ? 100 : 33.333;
-  const visibleCards = isMobile ? 1 : 3;
-  const offset = isMobile ? 0 : (100 - slideWidth * visibleCards) / 2;
+  const handleTouchEnd = (e) => {
+
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX.current - endX;
+
+    if (Math.abs(diff) < 50) return;
+
+    if (diff > 0) {
+      setIndex((prev) => (prev + 1) % testimoni.length);
+    } else {
+      setIndex((prev) => (prev - 1 + testimoni.length) % testimoni.length);
+    }
+  };
 
   return (
-    <section id="testimoni" className="relative bg-gray-50 py-16 scroll-mt-24 overflow-hidden">
-      {/* EDGE BLUR ULTRA-LIGHT */}
-      <div className="pointer-events-none absolute inset-0 z-10 flex justify-between">
-        <div className="hidden md:block h-full w-[10vw] backdrop-blur-[2px] bg-gradient-to-r from-gray-50 via-gray-50/50 to-transparent"></div>
-        <div className="hidden md:block h-full w-[10vw] backdrop-blur-[2px] bg-gradient-to-l from-gray-50 via-gray-50/50 to-transparent"></div>
-      </div>
+    <section
+      id="testimoni"
+      className="relative bg-gray-50 py-16 scroll-mt-24 overflow-hidden"
+    >
 
-      <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-bold mb-3 text-blue-800"
-        >
+      <div className="max-w-6xl mx-auto px-4 text-center">
+
+        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-blue-800">
           Apa Kata Mereka
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.05, duration: 0.4 }}
-          className="text-gray-500 mb-10 md:mb-12"
-        >
+        <p className="text-gray-500 mb-10 md:mb-12">
           Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
-        </motion.p>
+        </p>
 
-        {/* DESKTOP ULTRA-LIGHT */}
-        {!isMobile && (
-          <div ref={sliderRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-4 md:gap-6"
-              style={{ transform: `translateX(calc(-${index * slideWidth}% + ${offset}%))` }}
-              transition={{ duration: 0.7, ease: "linear" }} // linear = ringan
-            >
-              {extended.map((item, i) => {
-                const center = i === index;
-                return (
-                  <div
-                    key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 text-left transform transition-transform duration-300 ${
-                      center ? "scale-101 z-10" : "scale-95 opacity-85 z-0"
-                    }`}
-                  >
-                    <p className="text-gray-600 mb-3 italic text-sm break-words">
-                      "{item.message}"
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <img src={item.image} alt={item.name} className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover" />
-                      <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">{item.name}</h4>
-                        <p className="text-xs text-gray-500">{item.position}</p>
-                        <p className="text-[10px] text-gray-400">{item.company}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </motion.div>
-          </div>
-        )}
+        <div
+          className="overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
 
-        {/* MOBILE ULTRA-LIGHT */}
-        {isMobile && (
-          <div className="flex md:hidden justify-center items-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                className="bg-white p-3 rounded-lg flex flex-col items-center text-center max-w-xs mx-auto"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.5 }}
+          <div
+            ref={sliderRef}
+            className="flex transition-transform duration-700 ease-out"
+            style={{
+              willChange: "transform"
+            }}
+          >
+
+            {testimoni.map((item, i) => (
+
+              <div
+                key={i}
+                className="flex-shrink-0 w-full md:w-1/3 px-3"
               >
-                <img src={testimoni[current].image} alt={testimoni[current].name} className="w-14 h-14 rounded-full mb-2 object-cover" />
-                <p className="text-gray-700 mb-1 font-semibold text-sm">{testimoni[current].position}</p>
-                <p className="text-gray-500 mb-2 text-xs">{testimoni[current].company}</p>
-                <p className="text-gray-700 mb-2 italic text-sm">"{testimoni[current].message}"</p>
-                <h4 className="font-semibold text-gray-900 text-sm">{testimoni[current].name}</h4>
-              </motion.div>
-            </AnimatePresence>
+
+                <div className="bg-white rounded-xl p-5 text-left shadow-sm">
+
+                  <p className="text-gray-600 mb-4 italic text-sm">
+                    "{item.message}"
+                  </p>
+
+                  <div className="flex items-center gap-3">
+
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                      loading="lazy"
+                    />
+
+                    <div>
+
+                      <h4 className="font-semibold text-gray-800 text-sm">
+                        {item.name}
+                      </h4>
+
+                      <p className="text-xs text-gray-500">
+                        {item.position}
+                      </p>
+
+                      <p className="text-[10px] text-gray-400">
+                        {item.company}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            ))}
+
           </div>
-        )}
+
+        </div>
+
       </div>
+
     </section>
   );
 };
