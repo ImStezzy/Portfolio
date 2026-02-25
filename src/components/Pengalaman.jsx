@@ -138,8 +138,7 @@ const Pengalaman = () => {
       className="relative scroll-mt-16"
     >
       <div
-        className={`relative w-full py-20 md:py-28 px-6
-        bg-gradient-to-b from-[#0B1F3A] via-[#0B1F3A] ${slides[selectedIndex].bottomGradient}`}
+        className="relative w-full py-20 md:py-28 px-6 bg-[#0B1F3A]"
       >
 
         <motion.div
@@ -163,15 +162,15 @@ const Pengalaman = () => {
                     }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-800">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-500">
                       {slide.title}
                     </h2>
 
-                    <p className="text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-gray-50 mb-6 leading-relaxed">
                       {slide.description}
                     </p>
 
-                    <ul className="text-gray-600 space-y-2">
+                    <ul className="text-gray-50 space-y-2">
                       {slide.specs.map((spec, i) => (
                         <li key={i}>{spec}</li>
                       ))}
