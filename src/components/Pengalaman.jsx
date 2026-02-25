@@ -139,7 +139,7 @@ const Pengalaman = () => {
     >
       <div
         className={`relative w-full py-20 md:py-28 px-6
-        bg-gradient-to-b from-white via-white ${slides[selectedIndex].bottomGradient}`}
+        bg-gradient-to-b from-[#0B1F3A] via-[#0B1F3A] ${slides[selectedIndex].bottomGradient}`}
       >
 
         <motion.div
