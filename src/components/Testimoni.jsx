@@ -105,16 +105,19 @@ const TestimoniSection = () => {
   // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
-      if (isMobile) setCurrent((prev) => (prev + 1) % testimoni.length);
-      else setIndex((prev) => prev + 1);
-    }, 4000); // lebih lambat agar smooth
+      if (isMobile) {
+        setCurrent((prev) => (prev + 1) % testimoni.length);
+      } else {
+        setIndex((prev) => prev + 1);
+      }
+    }, 4000); // sedikit lebih lambat untuk performa mobile
     return () => clearInterval(interval);
   }, [isMobile]);
 
   // Loop fix desktop
   useEffect(() => {
     if (index >= testimoni.length * 2) {
-      setTimeout(() => setIndex(testimoni.length), 600); // lebih ringan
+      setTimeout(() => setIndex(testimoni.length), 600);
     }
   }, [index]);
 
@@ -142,10 +145,10 @@ const TestimoniSection = () => {
       id="testimoni"
       className="relative bg-gray-50 py-20 scroll-mt-24 overflow-hidden"
     >
-      {/* EDGE BLUR */}
+      {/* EDGE BLUR, dikurangi intensitas blur */}
       <div className="pointer-events-none absolute inset-0 z-10 flex justify-between">
-        <div className="hidden md:block h-full w-[10vw] backdrop-blur-md bg-gradient-to-r from-gray-50 via-gray-50/70 to-transparent"></div>
-        <div className="hidden md:block h-full w-[10vw] backdrop-blur-md bg-gradient-to-l from-gray-50 via-gray-50/70 to-transparent"></div>
+        <div className="hidden md:block h-full w-[12vw] backdrop-blur-sm bg-gradient-to-r from-gray-50 via-gray-50/60 to-transparent"></div>
+        <div className="hidden md:block h-full w-[12vw] backdrop-blur-sm bg-gradient-to-l from-gray-50 via-gray-50/60 to-transparent"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-20">
@@ -163,19 +166,19 @@ const TestimoniSection = () => {
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.5 }}
+          transition={{ delay: 0.05, duration: 0.5 }}
           className="text-gray-500 mb-12 md:mb-16"
         >
           Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
         </motion.p>
 
-        {/* DESKTOP SLIDER */}
+        {/* DESKTOP */}
         {!isMobile && (
           <div
             ref={sliderRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="relative overflow-visible"
+            className="relative overflow-hidden"
           >
             <motion.div
               className="flex gap-6 md:gap-8"
@@ -183,8 +186,8 @@ const TestimoniSection = () => {
                 transform: `translateX(calc(-${index * slideWidth}% + ${offset}%))`,
               }}
               transition={{
-                duration: 0.9, // lebih cepat untuk ringan
-                ease: [0.25, 0.8, 0.25, 1],
+                duration: 0.9, // turunkan durasi
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               {extended.map((item, i) => {
@@ -192,18 +195,20 @@ const TestimoniSection = () => {
                 return (
                   <div
                     key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-3xl p-6 md:p-8 text-left transform transition-transform duration-500 ${
-                      center ? "scale-102 shadow-lg z-10" : "scale-97 opacity-70 z-0"
+                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-2xl p-5 md:p-6 text-left transform transition-transform duration-500 ${
+                      center
+                        ? "scale-102 shadow-lg z-10"
+                        : "scale-95 opacity-80 z-0"
                     }`}
                   >
-                    <p className="text-gray-600 mb-6 italic leading-relaxed break-words">
+                    <p className="text-gray-600 mb-4 italic leading-relaxed break-words">
                       "{item.message}"
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-gray-200 object-cover"
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-200 object-cover"
                       />
                       <div>
                         <h4 className="font-semibold text-gray-800">{item.name}</h4>
@@ -218,26 +223,26 @@ const TestimoniSection = () => {
           </div>
         )}
 
-        {/* MOBILE VIEW */}
+        {/* MOBILE */}
         {isMobile && (
           <div className="flex md:hidden justify-center items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center text-center max-w-xs mx-auto"
-                initial={{ opacity: 0, x: 80 }}
+                className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center max-w-xs mx-auto"
+                initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -80 }}
-                transition={{ duration: 0.7 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.6 }}
               >
                 <img
                   src={testimoni[current].image}
                   alt={testimoni[current].name}
-                  className="w-20 h-20 rounded-full mb-4 object-cover"
+                  className="w-16 h-16 rounded-full mb-3 object-cover"
                 />
                 <p className="text-gray-700 mb-1 font-semibold">{testimoni[current].position}</p>
-                <p className="text-gray-500 mb-4 text-sm">{testimoni[current].company}</p>
-                <p className="text-gray-700 mb-4 italic">"{testimoni[current].message}"</p>
+                <p className="text-gray-500 mb-3 text-sm">{testimoni[current].company}</p>
+                <p className="text-gray-700 mb-3 italic">"{testimoni[current].message}"</p>
                 <h4 className="font-semibold text-gray-900">{testimoni[current].name}</h4>
               </motion.div>
             </AnimatePresence>
