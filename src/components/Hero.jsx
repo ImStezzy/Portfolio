@@ -12,7 +12,7 @@ const Hero = () => {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover object-[center_65%]"
+        className="absolute inset-0 w-full h-full object-cover -z-10"
       >
         <source src={`${import.meta.env.BASE_URL}backgroundHero.mp4`} type="video/mp4" />
       </video>
