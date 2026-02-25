@@ -36,15 +36,15 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-5xl lg:text-6xl font-bold leading-tight mb-6"
           >
-            <span className="text-black">Halo, Saya </span>
-            <span className="text-blue-600">Alkhairi Jusuf</span>
+            <span className="text-gray-50">Halo, Saya </span>
+            <span className="text-blue-500">Alkhairi Jusuf</span>
           </motion.h1>
 
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl text-gray-500 mb-6"
+            className="text-xl text-gray-300 mb-6"
           >
             Frontend Developer | Business Intelligence Developer | Graphic Design Enthusiast
           </motion.h2>
@@ -53,7 +53,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="max-w-xl text-base mb-8 text-gray-800"
+            className="max-w-xl text-base mb-8 text-gray-400"
           >
             Saya membangun website modern dan dashboard interaktif yang responsif dan user-friendly.
             Menentukan visualisasi data yang diperlukan perusahaan, serta mendesain visual grafis
