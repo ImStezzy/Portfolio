@@ -19,41 +19,62 @@ const testimoni = [
 const TestimoniSection = () => {
 
   const sliderRef = useRef(null);
-  const [index, setIndex] = useState(0);
+
+  const [index, setIndex] = useState(testimoni.length);
+  const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   const startX = useRef(0);
 
+  const extended = [...testimoni, ...testimoni, ...testimoni];
+
   useEffect(() => {
-    const resize = () => setIsMobile(window.innerWidth < 768);
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // AUTO SLIDE (ringan)
+  // AUTO SLIDE
   useEffect(() => {
+
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimoni.length);
+
+      if (isMobile) {
+        setCurrent((prev) => (prev + 1) % testimoni.length);
+      } else {
+        setIndex((prev) => prev + 1);
+      }
+
     }, 4500);
 
     return () => clearInterval(interval);
-  }, []);
 
-  // UPDATE POSITION GPU
+  }, [isMobile]);
+
+  // LOOP DESKTOP
   useEffect(() => {
+
+    if (!isMobile && index >= testimoni.length * 2) {
+      setTimeout(() => setIndex(testimoni.length), 500);
+    }
+
+  }, [index, isMobile]);
+
+  // GPU SLIDE MOBILE
+  useEffect(() => {
+
+    if (!isMobile) return;
 
     const slider = sliderRef.current;
     if (!slider) return;
 
     const width = slider.clientWidth;
-    const cardWidth = isMobile ? width : width / 3;
-
-    const x = -(index * cardWidth);
+    const x = -(current * width);
 
     slider.style.transform = `translate3d(${x}px,0,0)`;
 
-  }, [index, isMobile]);
+  }, [current, isMobile]);
 
   // SWIPE
   const handleTouchStart = (e) => {
@@ -68,77 +89,168 @@ const TestimoniSection = () => {
     if (Math.abs(diff) < 50) return;
 
     if (diff > 0) {
-      setIndex((prev) => (prev + 1) % testimoni.length);
+
+      if (isMobile) {
+        setCurrent((prev) => (prev + 1) % testimoni.length);
+      } else {
+        setIndex((prev) => prev + 1);
+      }
+
     } else {
-      setIndex((prev) => (prev - 1 + testimoni.length) % testimoni.length);
+
+      if (isMobile) {
+        setCurrent((prev) => (prev - 1 + testimoni.length) % testimoni.length);
+      } else {
+        setIndex((prev) => prev - 1);
+      }
+
     }
+
   };
 
+  const slideWidth = 33.333;
+  const visibleCards = 3;
+  const offset = (100 - slideWidth * visibleCards) / 2;
+
   return (
-    <section
-      id="testimoni"
-      className="relative bg-gray-50 py-16 scroll-mt-24 overflow-hidden"
-    >
+    <section id="testimoni" className="relative bg-gray-50 py-16 scroll-mt-24 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
 
-        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-blue-800">
-          Apa Kata Mereka
-        </h2>
-
-        <p className="text-gray-500 mb-10 md:mb-12">
-          Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
-        </p>
-
-        <div
-          className="overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+        <motion.h2
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="text-3xl md:text-4xl font-bold mb-3 text-blue-800"
         >
+          Apa Kata Mereka
+        </motion.h2>
+
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.05, duration: 0.4 }}
+          className="text-gray-500 mb-10 md:mb-12"
+        >
+          Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
+        </motion.p>
+
+        {/* DESKTOP VERSION */}
+        {!isMobile && (
 
           <div
             ref={sliderRef}
-            className="flex transition-transform duration-700 ease-out"
-            style={{
-              willChange: "transform"
-            }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="relative overflow-hidden"
           >
 
-            {testimoni.map((item, i) => (
+            <motion.div
+              className="flex gap-4 md:gap-6"
+              style={{
+                transform: `translateX(calc(-${index * slideWidth}% + ${offset}%))`,
+              }}
+              transition={{ duration: 0.7, ease: "linear" }}
+            >
 
-              <div
-                key={i}
-                className="flex-shrink-0 w-full md:w-1/3 px-3"
-              >
+              {extended.map((item, i) => {
 
-                <div className="bg-white rounded-xl p-5 text-left shadow-sm">
+                const center = i === index;
 
-                  <p className="text-gray-600 mb-4 italic text-sm">
-                    "{item.message}"
-                  </p>
+                return (
+                  <div
+                    key={i}
+                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 text-left transform transition-transform duration-300 ${
+                      center ? "scale-101 z-10" : "scale-95 opacity-85 z-0"
+                    }`}
+                  >
 
-                  <div className="flex items-center gap-3">
+                    <p className="text-gray-600 mb-3 italic text-sm break-words">
+                      "{item.message}"
+                    </p>
 
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                      loading="lazy"
-                    />
+                    <div className="flex items-center gap-2">
 
-                    <div>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
+                      />
 
-                      <h4 className="font-semibold text-gray-800 text-sm">
-                        {item.name}
-                      </h4>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 text-sm">
+                          {item.name}
+                        </h4>
+                        <p className="text-xs text-gray-500">
+                          {item.position}
+                        </p>
+                        <p className="text-[10px] text-gray-400">
+                          {item.company}
+                        </p>
+                      </div>
 
-                      <p className="text-xs text-gray-500">
-                        {item.position}
-                      </p>
+                    </div>
 
-                      <p className="text-[10px] text-gray-400">
-                        {item.company}
-                      </p>
+                  </div>
+                );
+              })}
+
+            </motion.div>
+
+          </div>
+
+        )}
+
+        {/* MOBILE VERSION */}
+        {isMobile && (
+
+          <div
+            className="overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+
+            <div
+              ref={sliderRef}
+              className="flex transition-transform duration-700 ease-out"
+              style={{ willChange: "transform" }}
+            >
+
+              {testimoni.map((item, i) => (
+
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-full px-3"
+                >
+
+                  <div className="bg-white rounded-xl p-5 text-left shadow-sm">
+
+                    <p className="text-gray-600 mb-4 italic text-sm">
+                      "{item.message}"
+                    </p>
+
+                    <div className="flex items-center gap-3">
+
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                        loading="lazy"
+                      />
+
+                      <div>
+                        <h4 className="font-semibold text-gray-800 text-sm">
+                          {item.name}
+                        </h4>
+                        <p className="text-xs text-gray-500">
+                          {item.position}
+                        </p>
+                        <p className="text-[10px] text-gray-400">
+                          {item.company}
+                        </p>
+                      </div>
 
                     </div>
 
@@ -146,13 +258,13 @@ const TestimoniSection = () => {
 
                 </div>
 
-              </div>
+              ))}
 
-            ))}
+            </div>
 
           </div>
 
-        </div>
+        )}
 
       </div>
 
