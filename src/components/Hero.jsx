@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section 
       id="beranda"
-      className="relative z-20 pt-28 pb-16 scroll-mt-16 overflow-hidden min-h-[420px]"
+      className="relative z-20 py-20 scroll-mt-16 overflow-hidden min-h-[420px]"
     >
       {/* VIDEO BACKGROUND */}
       <video
