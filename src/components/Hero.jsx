@@ -6,6 +6,22 @@ const Hero = () => {
       id="beranda"
       className="relative z-20 py-20 scroll-mt-16 bg-white"
     >
+      {/* VIDEO BACKGROUND */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+      >
+        <source src={`${import.meta.env.BASE_URL}backgroundHero.mp4`} type="video/mp4" />
+      </video>
+
+      {/* MOBILE BLUR OVERLAY */}
+      <div className="absolute inset-0 backdrop-blur-md bg-white/40 md:hidden -z-10"></div>
+
+      {/* DESKTOP LIGHT OVERLAY (optional agar teks lebih terbaca) */}
+      <div className="hidden md:block absolute inset-0 bg-white/20 -z-10"></div>
       <div className="max-w-7xl mx-auto px-6">
 
         <motion.div
