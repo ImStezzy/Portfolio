@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section 
       id="beranda"
-      className="relative z-20 py-20 scroll-mt-16 bg-white"
+      className="relative z-20 py-20 scroll-mt-16 overflow-hidden min-h-[420px]"
     >
       {/* VIDEO BACKGROUND */}
       <video
@@ -18,10 +18,9 @@ const Hero = () => {
       </video>
 
       {/* MOBILE BLUR OVERLAY */}
-      <div className="absolute inset-0 backdrop-blur-md bg-white/40 md:hidden -z-10"></div>
+      <div className="absolute inset-0 backdrop-blur-[2px] bg-white/10 md:hidden -z-10"></div>
 
-      {/* DESKTOP LIGHT OVERLAY (optional agar teks lebih terbaca) */}
-      <div className="hidden md:block absolute inset-0 bg-white/20 -z-10"></div>
+      {/* DESKTOP LIGHT OVERLAY */}
       <div className="max-w-7xl mx-auto px-6">
 
         <motion.div
