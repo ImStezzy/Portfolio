@@ -49,7 +49,7 @@ const slides = [
     cardLogo: logoMAB,
     card: {
       description:
-        "PT Mitra Abadi Bahari merupakan perusahaan distribusi yang berafiliasi dengan DMLT Group.",
+        "PT. Mitra Abadi Bahari adalah perusahaan distribusi yang tergabung dalam DMLT Group, dengan portofolio produk termasuk Obat Nyamuk King Kong, Ripella, Selendang Sabun Cream, dan lainnya.",
     },
   },
   {
