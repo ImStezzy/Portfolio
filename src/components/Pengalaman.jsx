@@ -30,7 +30,7 @@ const slides = [
     title: "Game Development",
     description:
       "Mengembangkan gameplay edukasi anak TK berbasis Windows menggunakan Unity.",
-    specs: ["🎮 Windows Gameplay", "⚙️ Unity Engine", "🎞️ 2D Animation"],
+    specs: ["⚙️ C#", "🎮 Unity Engine", "🎞️ 2D Animation", "⚙️ JS"],
     glow: "bg-purple-500",
     bottomGradient: "to-pink-100",
     cardLogo: logoTK,
@@ -42,8 +42,8 @@ const slides = [
   {
     title: "Data Analyst",
     description:
-      "Melakukan pengolahan dan visualisasi data menggunakan Power BI dashboard.",
-    specs: ["💻 Data Entry", "📊 Data Visualization", "🧠 Analytical Thinking"],
+      "Melakukan pengolahan dan visualisasi data menggunakan dashboard.",
+    specs: ["💻 Ms. Excel", "📊 Power BI", "📊 Tableau", "⚙️ SQL Query"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
     cardLogo: logoMAB,
@@ -56,7 +56,7 @@ const slides = [
     title: "Trainer App & QA Tester",
     description:
       "Melatih karyawan, membuat manual book, dan melakukan QA testing aplikasi.",
-    specs: ["📘 Documentation", "⚙️ Presentation", "🖼️ Graphic Design"],
+    specs: ["📘 DBmonitor", "⚙️ Katalon", "📊 Google Sheet", "💻 Jira", "🖼️ Inkscape"],
     glow: "bg-emerald-500",
     bottomGradient: "to-teal-100",
     cardLogo: logoHPS,
