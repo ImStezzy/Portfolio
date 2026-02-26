@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react"
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from "framer-motion"
+
 import './App.css'
+
 import SplashScreen from './components/SplashScreen'
+import GlobalBackground from './components/GlobalBackground'
+
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
+
 import Pengalaman from './components/Pengalaman'
 import Proyek from './components/Proyek'
 import Testimoni from './components/Testimoni'
@@ -34,10 +39,21 @@ function App() {
           <Navbar />
 
           <main className="flex-1">
+
+            {/* HERO tetap punya background sendiri */}
             <Hero />
-            <Pengalaman />
-            <Proyek />
-            <Testimoni />
+
+            {/* SECTION dengan GLOBAL BACKGROUND */}
+            <div className="relative">
+
+              <GlobalBackground />
+
+              <Pengalaman />
+              <Proyek />
+              <Testimoni />
+
+            </div>
+
           </main>
 
           <Footer />
