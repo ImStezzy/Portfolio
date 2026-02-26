@@ -143,8 +143,8 @@ const Pengalaman = () => {
 
         <motion.div
           key={selectedIndex}
-          className={`absolute -top-16 right-6 w-[200px] h-[200px] ${slides[selectedIndex].glow}
-          opacity-20 blur-[70px] rounded-full pointer-events-none`}
+          className={`absolute -top-16 right-6 w-[260px] h-[260px] ${slides[selectedIndex].glow}
+          opacity-20 blur-[200px] rounded-full pointer-events-none`}
           style={{ y: parallaxY }}
         />
 
