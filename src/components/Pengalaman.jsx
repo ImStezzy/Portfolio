@@ -243,7 +243,7 @@ const Pengalaman = () => {
                       flex-none
                       p-0
                       transition-all duration-200
-                      ${selectedIndex === index ? "bg-black scale-110" : "bg-gray-400 opacity-50"}
+                      ${selectedIndex === index ? "bg-white scale-110" : "bg-gray-400 opacity-50"}
                     `}
                   />
                 ))}

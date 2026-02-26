@@ -26,7 +26,7 @@ Please change the parent <Route path="${T}"> to <Route path="${T==="/"?"*":`${T}
                       flex-none
                       p-0
                       transition-all duration-200
-                      ${s===T?"bg-black scale-110":"bg-gray-400 opacity-50"}
+                      ${s===T?"bg-white scale-110":"bg-gray-400 opacity-50"}
                     `},T))})]}),w.jsxs(Bt.div,{ref:d,onMouseMove:E,onMouseLeave:x,className:`\r
             relative\r
             backdrop-blur-xl\r
