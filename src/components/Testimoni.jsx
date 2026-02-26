@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoAccount from '../assets/logoAccount.png';
+import logoAccount from "../assets/logoAccount.png";
 
 const testimoni = [
   { name: "Agung Nugroho", position: "Kepala Koordinator IT", company: "PT. Mitra Abadi Bahari, Tegal", message: "Eja memiliki dedikasi yang bagus dalam analisis data.", image: logoAccount },
@@ -35,7 +35,7 @@ const TestimoniSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // AUTO SLIDE
+  // AUTO SLIDE (lebih ringan mobile)
   useEffect(() => {
 
     const interval = setInterval(() => {
@@ -46,7 +46,7 @@ const TestimoniSection = () => {
         setIndex((prev) => prev + 1);
       }
 
-    }, 4500);
+    }, isMobile ? 6000 : 4500);
 
     return () => clearInterval(interval);
 
@@ -60,21 +60,6 @@ const TestimoniSection = () => {
     }
 
   }, [index, isMobile]);
-
-  // GPU SLIDE MOBILE
-  useEffect(() => {
-
-    if (!isMobile) return;
-
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const width = slider.clientWidth;
-    const x = -(current * width);
-
-    slider.style.transform = `translate3d(${x}px,0,0)`;
-
-  }, [current, isMobile]);
 
   // SWIPE
   const handleTouchStart = (e) => {
@@ -122,7 +107,7 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-bold mb-3 text-white relative inline-block"
+          className="text-3xl md:text-4xl font-bold mb-3 text-white"
         >
           Apa Kata Mereka
         </motion.h2>
@@ -137,7 +122,7 @@ const TestimoniSection = () => {
           Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
         </motion.p>
 
-        {/* DESKTOP VERSION */}
+        {/* DESKTOP */}
         {!isMobile && (
 
           <div
@@ -148,7 +133,7 @@ const TestimoniSection = () => {
           >
 
             <motion.div
-              className="flex gap-4 md:gap-6 overflow-visible"
+              className="flex gap-6"
               style={{
                 transform: `translateX(calc(-${index * slideWidth}% + ${offset}%))`,
               }}
@@ -162,8 +147,8 @@ const TestimoniSection = () => {
                 return (
                   <div
                     key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-5 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-left transform transition-transform duration-300 ${
-                      center ? "scale-[1.04] z-20" : "scale-95 opacity-80 z-0"
+                    className={`flex-shrink-0 w-[33.333%] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-5 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-left transition-transform duration-300 ${
+                      center ? "scale-[1.04] z-20" : "scale-95 opacity-80"
                     }`}
                   >
 
@@ -171,12 +156,12 @@ const TestimoniSection = () => {
                       "{item.message}"
                     </p>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
 
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
+                        className="w-12 h-12 rounded-full object-cover"
                       />
 
                       <div>
@@ -203,63 +188,60 @@ const TestimoniSection = () => {
 
         )}
 
-        {/* MOBILE VERSION */}
+        {/* MOBILE (1 CARD ONLY — LIGHTWEIGHT) */}
         {isMobile && (
 
           <div
-            className="overflow-hidden"
+            className="relative"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
 
-            <div
-              ref={sliderRef}
-              className="flex transition-transform duration-700 ease-out"
-              style={{ willChange: "transform" }}
-            >
+            <AnimatePresence mode="wait">
 
-              {testimoni.map((item, i) => (
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.35 }}
+                className="px-2"
+              >
 
-                <div
-                  key={i}
-                  className="flex-shrink-0 w-full px-3"
-                >
+                <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 text-left shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
 
-                  <div className=" backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-5 text-left shadow-[0_10px_40px_rgba(0,0,0,0.6)] ">
-                    <p className="text-gray-300 mb-4 italic text-sm">
-                      "{item.message}"
-                    </p>
+                  <p className="text-gray-300 mb-4 italic text-sm">
+                    "{testimoni[current].message}"
+                  </p>
 
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3">
 
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                        loading="lazy"
-                      />
+                    <img
+                      src={testimoni[current].image}
+                      alt={testimoni[current].name}
+                      className="w-12 h-12 rounded-full object-cover"
+                      loading="lazy"
+                    />
 
-                      <div>
-                        <h4 className="font-semibold text-white text-sm">
-                          {item.name}
-                        </h4>
-                        <p className="text-xs text-gray-400">
-                          {item.position}
-                        </p>
-                        <p className="text-[10px] text-gray-400">
-                          {item.company}
-                        </p>
-                      </div>
-
+                    <div>
+                      <h4 className="font-semibold text-white text-sm">
+                        {testimoni[current].name}
+                      </h4>
+                      <p className="text-xs text-gray-400">
+                        {testimoni[current].position}
+                      </p>
+                      <p className="text-[10px] text-gray-400">
+                        {testimoni[current].company}
+                      </p>
                     </div>
 
                   </div>
 
                 </div>
 
-              ))}
+              </motion.div>
 
-            </div>
+            </AnimatePresence>
 
           </div>
 
