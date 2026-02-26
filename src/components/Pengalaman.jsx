@@ -19,7 +19,6 @@ const slides = [
       "Mendata dan mempetakan perpipaan konsumen PDAM kota bengkulu menggunakan QGIS.",
     specs: ["🗺️ Qgis", "⚙️ GIS", "🧠 System Design"],
     glow: "bg-blue-500",
-    bottomGradient: "to-indigo-100",
     cardLogo: logoPDAM,
     card: {
       description:
@@ -32,7 +31,6 @@ const slides = [
       "Mengembangkan gameplay edukasi anak TK berbasis Windows menggunakan Unity.",
     specs: ["⚙️ C#", "🎮 Unity Engine", "🎞️ 2D Animation", "⚙️ JS"],
     glow: "bg-purple-500",
-    bottomGradient: "to-pink-100",
     cardLogo: logoTK,
     card: {
       description:
@@ -45,7 +43,6 @@ const slides = [
       "Melakukan pengolahan dan visualisasi data menggunakan dashboard.",
     specs: ["💻 Ms. Excel", "📊 Power BI", "📊 Tableau", "⚙️ SQL Query"],
     glow: "bg-emerald-500",
-    bottomGradient: "to-teal-100",
     cardLogo: logoMAB,
     card: {
       description:
@@ -58,7 +55,6 @@ const slides = [
       "Melatih karyawan, membuat manual book, dan melakukan QA testing aplikasi.",
     specs: ["📘 DBmonitor", "⚙️ Katalon", "📊 Google Sheet", "💻 Jira", "🖼️ Inkscape"],
     glow: "bg-emerald-500",
-    bottomGradient: "to-teal-100",
     cardLogo: logoHPS,
     card: {
       description:
@@ -82,7 +78,7 @@ const Pengalaman = () => {
     offset: ["start end", "end start"],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   const scrollTo = useCallback(
     (index) => embla && embla.scrollTo(index),
@@ -138,11 +134,36 @@ const Pengalaman = () => {
       className="relative scroll-mt-16 bg-[#0b0b0f] overflow-hidden"
     >
 
-      {/* background glow sama seperti proyek */}
+      {/* ===== APPLE LIQUID BACKGROUND ===== */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-[600px] h-[600px] bg-blue-500/10 blur-[140px] rounded-full top-[-200px] left-[20%]" />
+
+        <motion.div
+          style={{ y: parallaxY }}
+          className="absolute w-[700px] h-[700px] bg-blue-500/10 blur-[180px] rounded-full -top-[200px] left-[10%] transform-gpu"
+        />
+
+        <motion.div
+          style={{ y: parallaxY }}
+          className="absolute w-[600px] h-[600px] bg-indigo-500/10 blur-[200px] rounded-full bottom-[-250px] right-[10%] transform-gpu"
+        />
+
+        <motion.div
+          style={{ y: parallaxY }}
+          className="absolute w-[500px] h-[500px] bg-purple-500/10 blur-[180px] rounded-full top-[40%] left-[40%] transform-gpu"
+        />
+
       </div>
 
+      {/* CINEMATIC NOISE */}
+      <div
+        className="absolute inset-0 opacity-[0.035] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage:
+            "url('https://grainy-gradients.vercel.app/noise.svg')",
+        }}
+      />
+
+      {/* ===== CONTENT ===== */}
       <div className="relative w-full py-20 md:py-28 px-6">
 
         <motion.div
@@ -184,6 +205,7 @@ const Pengalaman = () => {
               ))}
             </div>
 
+            {/* DOT NAV */}
             <div className="flex gap-2 mt-4 ml-2 items-center">
               {slides.map((_, index) => (
                 <button
