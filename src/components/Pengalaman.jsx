@@ -64,18 +64,20 @@ const slides = [
 ];
 
 const Pengalaman = () => {
+
   const [emblaRef, embla] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
+  const mouseLight = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  /* ===== PARALLAX DEPTH ===== */
+  /* ===== DEPTH PARALLAX ===== */
 
   const layer1 = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const layer2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
@@ -121,12 +123,18 @@ const Pengalaman = () => {
 
     card.style.transform =
       `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+
+    /* dynamic lighting */
+
+    if (mouseLight.current) {
+      mouseLight.current.style.background =
+        `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 60%)`;
+    }
   };
 
   const resetTilt = () => {
     if (cardRef.current)
-      cardRef.current.style.transform =
-        "rotateX(0) rotateY(0) scale(1)";
+      cardRef.current.style.transform = "rotateX(0) rotateY(0) scale(1)";
   };
 
   return (
@@ -136,13 +144,13 @@ const Pengalaman = () => {
       className="relative scroll-mt-16 bg-[#0b0b0f] overflow-hidden"
     >
 
-      {/* ===== LIQUID AURORA BACKGROUND ===== */}
+      {/* ===== LIQUID AURORA ===== */}
 
       <div className="absolute inset-0 pointer-events-none">
 
         <motion.div
           style={{ y: layer1 }}
-          className="absolute w-[900px] h-[900px] bg-blue-500/20 blur-[220px] rounded-full -top-[300px] left-[5%]"
+          className={`absolute w-[900px] h-[900px] ${slides[selectedIndex].glow}/20 blur-[220px] rounded-full -top-[300px] left-[5%]`}
           animate={{ x: [0, 80, -40, 0], y: [0, 60, -40, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -185,7 +193,7 @@ const Pengalaman = () => {
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center relative z-10">
 
-          {/* TEXT CAROUSEL */}
+          {/* TEXT */}
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -222,7 +230,7 @@ const Pengalaman = () => {
 
             </div>
 
-            {/* DOT NAV */}
+            {/* DOT */}
 
             <div className="flex gap-2 mt-4 ml-2 items-center">
               {slides.map((_, index) => (
@@ -246,6 +254,7 @@ const Pengalaman = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={resetTilt}
             className="
+            relative
             backdrop-blur-xl
             bg-white/[0.08]
             border border-white/10
@@ -255,6 +264,11 @@ const Pengalaman = () => {
             transition-transform duration-300
             "
           >
+
+            <div
+              ref={mouseLight}
+              className="absolute inset-0 rounded-3xl pointer-events-none"
+            />
 
             <AnimatePresence mode="wait">
 
