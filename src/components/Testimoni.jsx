@@ -113,7 +113,7 @@ const TestimoniSection = () => {
   const offset = (100 - slideWidth * visibleCards) / 2;
 
   return (
-    <section id="testimoni" className="relative bg-gray-50 py-16 scroll-mt-16 overflow-hidden">
+    <section id="testimoni" className="relative py-16 scroll-mt-16">
 
       <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
 

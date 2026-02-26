@@ -30,13 +30,8 @@ Alkhairi Jusuf`;
   return (
     <section
       id="proyek"
-      className="scroll-mt-16 bg-[#0b0b0f] relative overflow-hidden"
+      className="scroll-mt-16"
     >
-
-      {/* subtle glow background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-[600px] h-[600px] bg-blue-500/10 blur-[140px] rounded-full top-[-200px] left-[20%]" />
-      </div>
 
       {/* ===== PREMIUM PROJECT AREA ===== */}
       <div className="py-24 md:py-32 px-6 relative">

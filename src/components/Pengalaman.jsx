@@ -141,45 +141,8 @@ const Pengalaman = () => {
     <section
       id="pengalaman"
       ref={sectionRef}
-      className="relative scroll-mt-16 bg-[#0b0b0f] overflow-hidden"
+      className="relative scroll-mt-16"
     >
-
-      {/* ===== LIQUID AURORA ===== */}
-
-      <div className="absolute inset-0 pointer-events-none">
-
-        <motion.div
-          style={{ y: layer1 }}
-          className={`absolute w-[900px] h-[900px] ${slides[selectedIndex].glow}/20 blur-[220px] rounded-full -top-[300px] left-[5%]`}
-          animate={{ x: [0, 80, -40, 0], y: [0, 60, -40, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <motion.div
-          style={{ y: layer2 }}
-          className="absolute w-[700px] h-[700px] bg-purple-500/20 blur-[220px] rounded-full top-[40%] right-[10%]"
-          animate={{ x: [0, -80, 40, 0], y: [0, -40, 40, 0] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <motion.div
-          style={{ y: layer3 }}
-          className="absolute w-[600px] h-[600px] bg-indigo-500/20 blur-[220px] rounded-full bottom-[-200px] left-[40%]"
-          animate={{ x: [0, 60, -30, 0], y: [0, 40, -40, 0] }}
-          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-      </div>
-
-      {/* ===== PROCEDURAL NOISE ===== */}
-
-      <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
-        style={{
-          background:
-            "repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.05) 0px, transparent 2px)"
-        }}
-      />
 
       {/* ===== CONTENT ===== */}
 
