@@ -9,7 +9,7 @@ import {
   motion,
   AnimatePresence,
   useScroll,
-  useTransform,
+  useTransform
 } from "framer-motion";
 
 const slides = [
@@ -22,8 +22,8 @@ const slides = [
     cardLogo: logoPDAM,
     card: {
       description:
-        "PDAM Kota Bengkulu menyediakan layanan air bersih berkualitas bagi masyarakat Kota Bengkulu.",
-    },
+        "PDAM Kota Bengkulu menyediakan layanan air bersih berkualitas bagi masyarakat Kota Bengkulu."
+    }
   },
   {
     title: "Game Development",
@@ -34,8 +34,8 @@ const slides = [
     cardLogo: logoTK,
     card: {
       description:
-        "TK Sandhy Putra Telkom Bengkulu merupakan lembaga PAUD yang berfokus pada pendidikan anak usia dini.",
-    },
+        "TK Sandhy Putra Telkom Bengkulu merupakan lembaga PAUD yang berfokus pada pendidikan anak usia dini."
+    }
   },
   {
     title: "Data Analyst",
@@ -46,8 +46,8 @@ const slides = [
     cardLogo: logoMAB,
     card: {
       description:
-        "PT. Mitra Abadi Bahari adalah perusahaan distribusi yang tergabung dalam DMLT Group.",
-    },
+        "PT. Mitra Abadi Bahari adalah perusahaan distribusi yang tergabung dalam DMLT Group."
+    }
   },
   {
     title: "Trainer App & QA Tester",
@@ -58,9 +58,9 @@ const slides = [
     cardLogo: logoHPS,
     card: {
       description:
-        "PT Hasta Prima Solusi merupakan perusahaan pengembang aplikasi dalam ekosistem DMLT Group.",
-    },
-  },
+        "PT Hasta Prima Solusi merupakan perusahaan pengembang aplikasi dalam ekosistem DMLT Group."
+    }
+  }
 ];
 
 const Pengalaman = () => {
@@ -70,15 +70,18 @@ const Pengalaman = () => {
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
 
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
-
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    offset: ["start end", "end start"]
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  /* ===== PARALLAX DEPTH ===== */
+
+  const layer1 = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const layer2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const layer3 = useTransform(scrollYProgress, [0, 1], [0, -30]);
+
+  /* ===== CAROUSEL ===== */
 
   const scrollTo = useCallback(
     (index) => embla && embla.scrollTo(index),
@@ -98,33 +101,32 @@ const Pengalaman = () => {
 
   useEffect(() => {
     if (!embla) return;
-
-    const autoplay = setInterval(() => {
-      embla.scrollNext();
-    }, 4500);
-
+    const autoplay = setInterval(() => embla.scrollNext(), 4500);
     return () => clearInterval(autoplay);
   }, [embla]);
 
-  const handleMouseMove = (e) => {
-    if (isMobile) return;
+  /* ===== TILT CARD ===== */
 
+  const handleMouseMove = (e) => {
     const card = cardRef.current;
     if (!card) return;
 
     const rect = card.getBoundingClientRect();
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateX = -(y - rect.height / 2) / 30;
-    const rotateY = (x - rect.width / 2) / 30;
+    const rotateX = -(y - rect.height / 2) / 35;
+    const rotateY = (x - rect.width / 2) / 35;
 
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    card.style.transform =
+      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
   };
 
   const resetTilt = () => {
     if (cardRef.current)
-      cardRef.current.style.transform = "rotateX(0) rotateY(0) scale(1)";
+      cardRef.current.style.transform =
+        "rotateX(0) rotateY(0) scale(1)";
   };
 
   return (
@@ -134,109 +136,128 @@ const Pengalaman = () => {
       className="relative scroll-mt-16 bg-[#0b0b0f] overflow-hidden"
     >
 
-      {/* ===== APPLE LIQUID BACKGROUND ===== */}
+      {/* ===== LIQUID AURORA BACKGROUND ===== */}
+
       <div className="absolute inset-0 pointer-events-none">
 
         <motion.div
-          style={{ y: parallaxY }}
-          className="absolute w-[700px] h-[700px] bg-blue-500/10 blur-[180px] rounded-full -top-[200px] left-[10%] transform-gpu"
+          style={{ y: layer1 }}
+          className="absolute w-[900px] h-[900px] bg-blue-500/20 blur-[220px] rounded-full -top-[300px] left-[5%]"
+          animate={{ x: [0, 80, -40, 0], y: [0, 60, -40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
 
         <motion.div
-          style={{ y: parallaxY }}
-          className="absolute w-[600px] h-[600px] bg-indigo-500/10 blur-[200px] rounded-full bottom-[-250px] right-[10%] transform-gpu"
+          style={{ y: layer2 }}
+          className="absolute w-[700px] h-[700px] bg-purple-500/20 blur-[220px] rounded-full top-[40%] right-[10%]"
+          animate={{ x: [0, -80, 40, 0], y: [0, -40, 40, 0] }}
+          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
         />
 
         <motion.div
-          style={{ y: parallaxY }}
-          className="absolute w-[500px] h-[500px] bg-purple-500/10 blur-[180px] rounded-full top-[40%] left-[40%] transform-gpu"
+          style={{ y: layer3 }}
+          className="absolute w-[600px] h-[600px] bg-indigo-500/20 blur-[220px] rounded-full bottom-[-200px] left-[40%]"
+          animate={{ x: [0, 60, -30, 0], y: [0, 40, -40, 0] }}
+          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
         />
 
       </div>
 
-      {/* CINEMATIC NOISE */}
+      {/* ===== PROCEDURAL NOISE ===== */}
+
       <div
-        className="absolute inset-0 opacity-[0.035] mix-blend-overlay pointer-events-none"
+        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
         style={{
-          backgroundImage:
-            "url('https://grainy-gradients.vercel.app/noise.svg')",
+          background:
+            "repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.05) 0px, transparent 2px)"
         }}
       />
 
       {/* ===== CONTENT ===== */}
+
       <div className="relative w-full py-20 md:py-28 px-6">
 
         <motion.div
           key={selectedIndex}
           className={`absolute -top-16 right-6 w-[260px] h-[260px] ${slides[selectedIndex].glow}
-          opacity-20 blur-[200px] rounded-full pointer-events-none`}
-          style={{ y: parallaxY }}
+          opacity-20 blur-[200px] rounded-full`}
         />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center relative z-10">
 
           {/* TEXT CAROUSEL */}
+
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
+
               {slides.map((slide, index) => (
                 <div className="min-w-full pr-6" key={index}>
+
                   <motion.div
                     animate={{
                       opacity: selectedIndex === index ? 1 : 0.35,
-                      y: selectedIndex === index ? 0 : 20,
+                      y: selectedIndex === index ? 0 : 20
                     }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-500">
+
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-400">
                       {slide.title}
                     </h2>
 
-                    <p className="text-gray-50 mb-6 leading-relaxed">
+                    <p className="text-gray-300 mb-6 leading-relaxed">
                       {slide.description}
                     </p>
 
-                    <ul className="text-gray-50 space-y-2">
+                    <ul className="text-gray-300 space-y-2">
                       {slide.specs.map((spec, i) => (
                         <li key={i}>{spec}</li>
                       ))}
                     </ul>
+
                   </motion.div>
+
                 </div>
               ))}
+
             </div>
 
             {/* DOT NAV */}
+
             <div className="flex gap-2 mt-4 ml-2 items-center">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`
-                    block
-                    w-[6px] h-[6px]
-                    rounded-full
-                    flex-none
-                    p-0
-                    transition-all duration-200
-                    ${
-                      selectedIndex === index
-                        ? "bg-white scale-110"
-                        : "bg-gray-400 opacity-50"
-                    }
-                  `}
+                  className={`w-[6px] h-[6px] rounded-full transition-all
+                  ${selectedIndex === index
+                      ? "bg-white scale-110"
+                      : "bg-gray-500 opacity-40"}`}
                 />
               ))}
             </div>
+
           </div>
 
-          {/* CARD */}
+          {/* GLASS CARD */}
+
           <motion.div
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={resetTilt}
-            className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-white/40 transition-transform duration-300 will-change-transform"
+            className="
+            backdrop-blur-xl
+            bg-white/[0.08]
+            border border-white/10
+            rounded-3xl
+            shadow-[0_10px_60px_rgba(0,0,0,0.7)]
+            p-8
+            transition-transform duration-300
+            "
           >
+
             <AnimatePresence mode="wait">
+
               <motion.div
                 key={selectedIndex}
                 initial={{ opacity: 0, y: 15 }}
@@ -244,23 +265,29 @@ const Pengalaman = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35 }}
               >
+
                 <div className="flex items-center gap-4 mb-5">
+
                   <img
                     src={slides[selectedIndex].cardLogo}
                     alt="Logo"
                     className="w-14 h-14 object-contain"
                   />
 
-                  <h3 className="text-lg font-semibold text-blue-800">
+                  <h3 className="text-lg font-semibold text-white">
                     Latar Belakang Perusahaan
                   </h3>
+
                 </div>
 
-                <p className="text-gray-700 leading-relaxed text-justify">
+                <p className="text-gray-300 leading-relaxed text-justify">
                   {slides[selectedIndex].card.description}
                 </p>
+
               </motion.div>
+
             </AnimatePresence>
+
           </motion.div>
 
         </div>
