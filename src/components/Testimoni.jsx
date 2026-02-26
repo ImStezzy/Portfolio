@@ -122,7 +122,7 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-bold mb-3 text-blue-800"
+          className="text-3xl md:text-4xl font-bold mb-3 text-white relative inline-block"
         >
           Apa Kata Mereka
         </motion.h2>
