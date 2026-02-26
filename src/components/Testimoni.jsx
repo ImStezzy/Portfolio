@@ -115,7 +115,7 @@ const TestimoniSection = () => {
   return (
     <section id="testimoni" className="relative py-16 scroll-mt-16">
 
-      <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
+      <div className="max-w-6xl mx-auto px-8 text-center relative z-20">
 
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
@@ -144,11 +144,11 @@ const TestimoniSection = () => {
             ref={sliderRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="relative overflow-hidden"
+            className="relative py-6"
           >
 
             <motion.div
-              className="flex gap-4 md:gap-6"
+              className="flex gap-4 md:gap-6 overflow-visible"
               style={{
                 transform: `translateX(calc(-${index * slideWidth}% + ${offset}%))`,
               }}
@@ -162,8 +162,8 @@ const TestimoniSection = () => {
                 return (
                   <div
                     key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 text-left transform transition-transform duration-300 ${
-                      center ? "scale-101 z-10" : "scale-95 opacity-85 z-0"
+                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-left transform transition-transform duration-300 ${
+                      center ? "scale-[1.04] z-20" : "scale-95 opacity-80 z-0"
                     }`}
                   >
 
