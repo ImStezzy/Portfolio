@@ -69,7 +69,7 @@
       const slider = sliderRef.current;
       if (!slider) return;
 
-      slider.style.transform = `translate3d(-${current * 100}vw,0,0)`;
+      slider.style.transform = `translate3d(-${current * 100}%,0,0)`;
 
     }, [current, isMobile]);
 
@@ -101,8 +101,7 @@
     const offset = (100 - slideWidth * visibleCards) / 2;
 
     return (
-      <section id="testimoni" className="relative py-16 scroll-mt-24 overflow-hidden max-w-full"
-    >
+      <section id="testimoni" className="relative py-16 scroll-mt-24 overflow-hidden">
 
         <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
 
@@ -203,7 +202,7 @@
 
               <div
                 ref={sliderRef}
-                className="flex transition-transform duration-500 ease-out"
+                className="flex transition-transform duration-500 ease-out touch-pan-y"
                 style={{
                   willChange: "transform",
                 }}
