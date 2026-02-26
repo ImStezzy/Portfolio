@@ -138,7 +138,7 @@ const Pengalaman = () => {
       className="relative scroll-mt-16"
     >
       <div
-        className="relative w-full py-20 md:py-28 px-6 bg-[#16151b]"
+        className="relative w-full py-20 md:py-28 px-6 bg-[#0b0b0f]"
       >
 
         <motion.div
