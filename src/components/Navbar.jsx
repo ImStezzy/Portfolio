@@ -5,10 +5,11 @@ import Logo from "../assets/logo.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("beranda");
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Lock scroll saat menu terbuka
+  // Lock scroll saat menu mobile terbuka
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
@@ -18,6 +19,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  // navbar background saat scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -27,16 +29,49 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // detect section aktif
+  useEffect(() => {
+    const sections = ["beranda", "pengalaman", "proyek", "testimoni"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: 0
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const navItems = [
+    { id: "beranda", label: "Beranda" },
+    { id: "pengalaman", label: "Pengalaman" },
+    { id: "proyek", label: "Proyek" },
+    { id: "testimoni", label: "Testimoni" }
+  ];
+
   return (
     <>
       {/* NAVBAR */}
       <nav
         className={`sticky top-0 w-full z-50 transition-all duration-300 will-change-transform transform-gpu
-        ${scrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm"
-          : "bg-white backdrop-blur-sm"
-        }
-        `}
+        ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-sm shadow-sm"
+            : "bg-white backdrop-blur-sm"
+        }`}
       >
         <div className="w-full">
           <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
@@ -55,19 +90,32 @@ const Navbar = () => {
             />
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-              <a href="#beranda" className="hover:text-black transition">
-                Beranda
-              </a>
-              <a href="#pengalaman" className="hover:text-black transition">
-                Pengalaman
-              </a>
-              <a href="#proyek" className="hover:text-black transition">
-                Proyek
-              </a>
-              <a href="#testimoni" className="hover:text-black transition">
-                Testimoni
-              </a>
+            <div className="hidden md:flex space-x-8 font-medium text-gray-700 relative">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`relative pb-1 transition ${
+                    activeSection === item.id
+                      ? "text-black"
+                      : "hover:text-black"
+                  }`}
+                >
+                  {item.label}
+
+                  {activeSection === item.id && (
+                    <motion.div
+                      layoutId="navbar-underline"
+                      className="absolute left-0 -bottom-1 w-full h-[2px] bg-black rounded"
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35
+                      }}
+                    />
+                  )}
+                </a>
+              ))}
             </div>
 
             {/* Animated Burger */}
@@ -118,18 +166,15 @@ const Navbar = () => {
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <a href="#beranda" onClick={handleLinkClick}>
-                Beranda
-              </a>
-              <a href="#pengalaman" onClick={handleLinkClick}>
-                Pengalaman
-              </a>
-              <a href="#proyek" onClick={handleLinkClick}>
-                Proyek
-              </a>
-              <a href="#testimoni" onClick={handleLinkClick}>
-                Testimoni
-              </a>
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={handleLinkClick}
+                >
+                  {item.label}
+                </a>
+              ))}
             </motion.div>
           </>
         )}
