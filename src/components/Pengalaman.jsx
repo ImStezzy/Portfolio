@@ -49,7 +49,7 @@ const slides = [
     cardLogo: logoMAB,
     card: {
       description:
-        "PT. Mitra Abadi Bahari adalah perusahaan distribusi yang tergabung dalam DMLT Group, dengan portofolio produk termasuk Obat Nyamuk King Kong, Ripella, Selendang Sabun Cream, dan lainnya.",
+        "PT. Mitra Abadi Bahari adalah perusahaan distribusi yang tergabung dalam DMLT Group.",
     },
   },
   {
@@ -135,11 +135,15 @@ const Pengalaman = () => {
     <section
       id="pengalaman"
       ref={sectionRef}
-      className="relative scroll-mt-16"
+      className="relative scroll-mt-16 bg-[#0b0b0f] overflow-hidden"
     >
-      <div
-        className="relative w-full py-20 md:py-28 px-6 bg-[#0b0b0f]"
-      >
+
+      {/* background glow sama seperti proyek */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute w-[600px] h-[600px] bg-blue-500/10 blur-[140px] rounded-full top-[-200px] left-[20%]" />
+      </div>
+
+      <div className="relative w-full py-20 md:py-28 px-6">
 
         <motion.div
           key={selectedIndex}
@@ -180,25 +184,28 @@ const Pengalaman = () => {
               ))}
             </div>
 
-            {/* DOT NAV MINIMALIS BULAT */}
-              <div className="flex gap-2 mt-4 ml-2 items-center">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollTo(index)}
-                    className={`
-                      block
-                      w-[6px] h-[6px]
-                      rounded-full
-                      flex-none
-                      p-0
-                      transition-all duration-200
-                      ${selectedIndex === index ? "bg-white scale-110" : "bg-gray-400 opacity-50"}
-                    `}
-                  />
-                ))}
-              </div>
-           </div> 
+            <div className="flex gap-2 mt-4 ml-2 items-center">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`
+                    block
+                    w-[6px] h-[6px]
+                    rounded-full
+                    flex-none
+                    p-0
+                    transition-all duration-200
+                    ${
+                      selectedIndex === index
+                        ? "bg-white scale-110"
+                        : "bg-gray-400 opacity-50"
+                    }
+                  `}
+                />
+              ))}
+            </div>
+          </div>
 
           {/* CARD */}
           <motion.div
@@ -230,7 +237,6 @@ const Pengalaman = () => {
                 <p className="text-gray-700 leading-relaxed text-justify">
                   {slides[selectedIndex].card.description}
                 </p>
-
               </motion.div>
             </AnimatePresence>
           </motion.div>
