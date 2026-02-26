@@ -132,7 +132,7 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05, duration: 0.4 }}
-          className="text-gray-500 mb-10 md:mb-12"
+          className="text-white mb-10 md:mb-12"
         >
           Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
         </motion.p>
