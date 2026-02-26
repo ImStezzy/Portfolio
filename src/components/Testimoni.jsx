@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import logoAccount from '../assets/logoAccount.png';
+import { motion } from "framer-motion";
+import logoAccount from "../assets/logoAccount.png";
 
 const testimoni = [
   { name: "Agung Nugroho", position: "Kepala Koordinator IT", company: "PT. Mitra Abadi Bahari, Tegal", message: "Eja memiliki dedikasi yang bagus dalam analisis data.", image: logoAccount },
   { name: "Tedy Saleh Setiadi", position: "Kepala Operasional", company: "PT. Hasta Prima Solusi, Tangerang", message: "Dalam pengecekan tester semua di selesaikan dengan bagus, pribadi yang baik.", image: logoAccount },
   { name: "Muhammad Alfaruki", position: "Human Resources Development", company: "PT. Hasta Prima Solusi, Tangerang", message: "Sopan, Ramah dan baik", image: logoAccount },
   { name: "Dedi setyawan", position: "Supervisor Software Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Pribadi yang bertanggung jawab dan konsisten dalam menyelesaikan tugas.", image: logoAccount },
-  { name: "Rahmat Ramadhan", position: "Supervisor Software", company: "PT. Hasta Prima Solusi, Tangerang", message: "Fundamental dalam software, walaupun di pekerjaan sebagai tester dia mampu memahami dan beradaptasi dengan SDLC perusahaan.", image: logoAccount },
+  { name: "Rahmat Ramadhan", position: "Supervisor Software", company: "PT. Hasta Prima Solusi, Tangerang", message: "Fundamental dalam software.", image: logoAccount },
   { name: "Hasim Subni", position: "Senior infrastructure IT", company: "PT. Hasta Prima Solusi, Tangerang", message: "Mampu beradaptasi.", image: logoAccount },
-  { name: "Ricky Haryanto", position: "Database administrator", company: "PT. Hasta Prima Solusi, Tangerang", message: "Seorang rekan kerja yang penuh rasa ingin tahu.", image: logoAccount },
-  { name: "Rudi Novrianto", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Selama bekerja bersama, Anda menunjukkan dedikasi dan profesionalisme.", image: logoAccount },
-  { name: "Antok Wahyudi", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Hasil kerja sangat memuaskan, pengerjaan cepat, detail, dan sesuai kebutuhan.", image: logoAccount },
-  { name: "Nanang Andriani", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Orang yang pekerja keras.", image: logoAccount },
+  { name: "Ricky Haryanto", position: "Database administrator", company: "PT. Hasta Prima Solusi, Tangerang", message: "Rekan kerja yang penuh rasa ingin tahu.", image: logoAccount },
+  { name: "Rudi Novrianto", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Dedikasi dan profesionalisme tinggi.", image: logoAccount },
+  { name: "Antok Wahyudi", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Hasil kerja memuaskan.", image: logoAccount },
+  { name: "Nanang Andriani", position: "Senior Programmer Delphi", company: "PT. Hasta Prima Solusi, Tangerang", message: "Pekerja keras.", image: logoAccount },
   { name: "Dimas Aji Anggono", position: "Senior Helpdesk & Implementator", company: "PT. Hasta Prima Solusi, Tangerang", message: "Cepat memahami flow data.", image: logoAccount },
 ];
 
@@ -61,7 +61,7 @@ const TestimoniSection = () => {
 
   }, [index, isMobile]);
 
-  // GPU SLIDE MOBILE
+  // MOBILE GPU SLIDE (SUPER STABLE)
   useEffect(() => {
 
     if (!isMobile) return;
@@ -69,14 +69,10 @@ const TestimoniSection = () => {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    const width = slider.clientWidth;
-    const x = -(current * width);
-
-    slider.style.transform = `translate3d(${x}px,0,0)`;
+    slider.style.transform = `translate3d(-${current * 100}vw,0,0)`;
 
   }, [current, isMobile]);
 
-  // SWIPE
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
   };
@@ -89,21 +85,13 @@ const TestimoniSection = () => {
     if (Math.abs(diff) < 50) return;
 
     if (diff > 0) {
-
-      if (isMobile) {
-        setCurrent((prev) => (prev + 1) % testimoni.length);
-      } else {
-        setIndex((prev) => prev + 1);
-      }
-
+      isMobile
+        ? setCurrent((prev) => (prev + 1) % testimoni.length)
+        : setIndex((prev) => prev + 1);
     } else {
-
-      if (isMobile) {
-        setCurrent((prev) => (prev - 1 + testimoni.length) % testimoni.length);
-      } else {
-        setIndex((prev) => prev - 1);
-      }
-
+      isMobile
+        ? setCurrent((prev) => (prev - 1 + testimoni.length) % testimoni.length)
+        : setIndex((prev) => prev - 1);
     }
 
   };
@@ -113,7 +101,7 @@ const TestimoniSection = () => {
   const offset = (100 - slideWidth * visibleCards) / 2;
 
   return (
-    <section id="testimoni" className="relative bg-gray-50 py-16 scroll-mt-24 overflow-hidden">
+    <section id="testimoni" className="relative py-16 scroll-mt-24 overflow-hidden">
 
       <div className="max-w-6xl mx-auto px-4 text-center relative z-20">
 
@@ -122,7 +110,7 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-bold mb-3 text-blue-800"
+          className="text-3xl md:text-4xl font-bold mb-3 text-blue-400"
         >
           Apa Kata Mereka
         </motion.h2>
@@ -132,12 +120,12 @@ const TestimoniSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.05, duration: 0.4 }}
-          className="text-gray-500 mb-10 md:mb-12"
+          className="text-gray-400 mb-10 md:mb-12"
         >
           Testimoni dari kolega dan klien yang pernah bekerja sama dengan saya
         </motion.p>
 
-        {/* DESKTOP VERSION */}
+        {/* DESKTOP */}
         {!isMobile && (
 
           <div
@@ -162,12 +150,12 @@ const TestimoniSection = () => {
                 return (
                   <div
                     key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 text-left transform transition-transform duration-300 ${
-                      center ? "scale-101 z-10" : "scale-95 opacity-85 z-0"
+                    className={`flex-shrink-0 w-full md:w-[33.333%] rounded-xl p-5 text-left backdrop-blur-lg bg-white/10 border border-white/10 transition-transform duration-300 ${
+                      center ? "scale-100 z-10" : "scale-95 opacity-80"
                     }`}
                   >
 
-                    <p className="text-gray-600 mb-3 italic text-sm break-words">
+                    <p className="text-gray-200 mb-3 italic text-sm">
                       "{item.message}"
                     </p>
 
@@ -176,14 +164,14 @@ const TestimoniSection = () => {
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
+                        className="w-12 h-12 rounded-full object-cover"
                       />
 
                       <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">
+                        <h4 className="font-semibold text-white text-sm">
                           {item.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-300">
                           {item.position}
                         </p>
                         <p className="text-[10px] text-gray-400">
@@ -203,7 +191,7 @@ const TestimoniSection = () => {
 
         )}
 
-        {/* MOBILE VERSION */}
+        {/* MOBILE */}
         {isMobile && (
 
           <div
@@ -214,20 +202,22 @@ const TestimoniSection = () => {
 
             <div
               ref={sliderRef}
-              className="flex transition-transform duration-700 ease-out"
-              style={{ willChange: "transform" }}
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                willChange: "transform",
+              }}
             >
 
               {testimoni.map((item, i) => (
 
                 <div
                   key={i}
-                  className="flex-shrink-0 w-full px-3"
+                  className="flex-shrink-0 w-screen px-5"
                 >
 
-                  <div className="bg-white rounded-xl p-5 text-left shadow-sm">
+                  <div className="rounded-xl p-5 text-left backdrop-blur-lg bg-white/10 border border-white/10">
 
-                    <p className="text-gray-600 mb-4 italic text-sm">
+                    <p className="text-gray-200 mb-4 italic text-sm">
                       "{item.message}"
                     </p>
 
@@ -241,10 +231,10 @@ const TestimoniSection = () => {
                       />
 
                       <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">
+                        <h4 className="font-semibold text-white text-sm">
                           {item.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-300">
                           {item.position}
                         </p>
                         <p className="text-[10px] text-gray-400">
