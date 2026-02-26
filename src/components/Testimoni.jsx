@@ -162,12 +162,12 @@ const TestimoniSection = () => {
                 return (
                   <div
                     key={i}
-                    className={`flex-shrink-0 w-full md:w-[33.333%] bg-white rounded-xl p-4 md:p-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-left transform transition-transform duration-300 ${
+                    className={`flex-shrink-0 w-full md:w-[33.333%] backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-5 shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-left transform transition-transform duration-300 ${
                       center ? "scale-[1.04] z-20" : "scale-95 opacity-80 z-0"
                     }`}
                   >
 
-                    <p className="text-gray-600 mb-3 italic text-sm break-words">
+                    <p className="text-gray-300 mb-3 italic text-sm break-words">
                       "{item.message}"
                     </p>
 
@@ -180,10 +180,10 @@ const TestimoniSection = () => {
                       />
 
                       <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">
+                        <h4 className="font-semibold text-white text-sm">
                           {item.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           {item.position}
                         </p>
                         <p className="text-[10px] text-gray-400">
@@ -225,9 +225,8 @@ const TestimoniSection = () => {
                   className="flex-shrink-0 w-full px-3"
                 >
 
-                  <div className="bg-white rounded-xl p-5 text-left shadow-sm">
-
-                    <p className="text-gray-600 mb-4 italic text-sm">
+                  <div className=" backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-5 text-left shadow-[0_10px_40px_rgba(0,0,0,0.6)] ">
+                    <p className="text-gray-300 mb-4 italic text-sm">
                       "{item.message}"
                     </p>
 
@@ -241,10 +240,10 @@ const TestimoniSection = () => {
                       />
 
                       <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">
+                        <h4 className="font-semibold text-white text-sm">
                           {item.name}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           {item.position}
                         </p>
                         <p className="text-[10px] text-gray-400">
